@@ -18,7 +18,7 @@ a:hover{text-decoration:underline}
 header.site{border-bottom:.5px solid var(--border);position:sticky;top:0;background:rgba(14,14,16,.92);backdrop-filter:blur(8px);z-index:10}
 .bar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
 .brand{display:flex;align-items:center;gap:10px}
-.brand img{width:30px;height:30px}
+.brand img{width:44px;height:44px}
 .brand b{font-size:16px;letter-spacing:.5px;color:var(--light);font-weight:600}
 nav a{color:var(--muted);font-size:14px;margin-left:20px}
 nav a:hover{color:var(--light);text-decoration:none}
