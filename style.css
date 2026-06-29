@@ -1,0 +1,66 @@
+/* ===== The W Lab — brand stylesheet ===== */
+:root{
+  --dark:#0E0E10; --surface:#15151A; --surface2:#1A1A1D;
+  --rasp:#E61E63; --light:#F2F2EF; --muted:#9A9AA0; --border:#26262A;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  background:var(--dark); color:var(--light);
+  font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+a{color:var(--rasp);text-decoration:none}
+a:hover{text-decoration:underline}
+.wrap{max-width:1040px;margin:0 auto;padding:0 24px}
+
+/* header */
+header.site{border-bottom:.5px solid var(--border);position:sticky;top:0;background:rgba(14,14,16,.92);backdrop-filter:blur(8px);z-index:10}
+.bar{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
+.brand{display:flex;align-items:center;gap:10px}
+.brand img{width:30px;height:30px}
+.brand b{font-size:16px;letter-spacing:.5px;color:var(--light);font-weight:600}
+nav a{color:var(--muted);font-size:14px;margin-left:20px}
+nav a:hover{color:var(--light);text-decoration:none}
+
+/* hero */
+.hero{padding:46px 0 30px}
+.kicker{font-family:ui-monospace,"SFMono-Regular",Menlo,monospace;font-size:12px;letter-spacing:2px;text-transform:uppercase;color:var(--rasp);font-weight:700}
+.hero h1{font-size:34px;line-height:1.15;margin:12px 0 8px;letter-spacing:-.5px}
+.hero p{color:var(--muted);font-size:16px;max-width:620px}
+
+/* article cards (home) */
+.feed{display:grid;grid-template-columns:1fr;gap:20px;padding:10px 0 60px}
+.card{display:grid;grid-template-columns:300px 1fr;gap:22px;background:var(--surface);border:.5px solid var(--border);border-radius:14px;overflow:hidden;transition:border-color .2s}
+.card:hover{border-color:var(--rasp)}
+.card .thumb{background:#000}
+.card .thumb img{width:100%;height:100%;object-fit:cover;display:block}
+.card .body{padding:20px 22px 22px 0}
+.tag{font-family:ui-monospace,monospace;font-size:11px;letter-spacing:1px;text-transform:uppercase;color:var(--rasp);font-weight:700}
+.card h2{font-size:21px;line-height:1.25;margin:8px 0 8px;font-weight:600}
+.card h2 a{color:var(--light)}
+.card h2 a:hover{color:var(--rasp);text-decoration:none}
+.card .dek{color:var(--muted);font-size:14.5px}
+.card .meta{color:#6b6b72;font-size:12.5px;margin-top:12px;font-family:ui-monospace,monospace}
+@media(max-width:640px){.card{grid-template-columns:1fr}.card .body{padding:0 20px 20px}}
+
+/* article page */
+.article{max-width:720px;margin:0 auto;padding:40px 24px 70px}
+.article .back{font-size:13px;color:var(--muted);font-family:ui-monospace,monospace}
+.article header.post{margin:18px 0 26px;border-bottom:.5px solid var(--border);padding-bottom:24px}
+.article header.post .tag{display:block;margin-bottom:10px}
+.article h1{font-size:33px;line-height:1.18;letter-spacing:-.5px;margin-bottom:12px}
+.article .dek{color:var(--muted);font-size:17px}
+.article .byline{color:#6b6b72;font-size:13px;margin-top:14px;font-family:ui-monospace,monospace}
+.article p{margin:0 0 18px;font-size:16.5px;color:#E2E2DF}
+.article h2{color:var(--rasp);font-size:22px;margin:34px 0 12px;letter-spacing:-.2px}
+.article img{width:100%;border-radius:12px;margin:8px 0 6px}
+.article em{color:var(--light);font-style:italic}
+.article strong{color:var(--light)}
+.article hr{border:none;border-top:.5px solid var(--border);margin:34px 0}
+.article figcaption,.article > p > em:last-child{color:var(--muted)}
+
+/* footer */
+footer.site{border-top:.5px solid var(--border);padding:28px 0;color:var(--muted);font-size:13px}
+.foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
+.foot .brand b{font-size:14px}
