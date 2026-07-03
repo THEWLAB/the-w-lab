@@ -64,3 +64,11 @@ nav a:hover{color:var(--light);text-decoration:none}
 footer.site{border-top:.5px solid var(--border);padding:28px 0;color:var(--muted);font-size:13px}
 .foot{display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
 .foot .brand b{font-size:14px}
+
+/* tables */
+.article table{width:100%;border-collapse:collapse;margin:10px 0 26px;font-size:15px}
+.article thead th{color:var(--rasp);text-align:left;font-family:ui-monospace,monospace;font-size:12px;letter-spacing:.5px;text-transform:uppercase;border-bottom:1px solid var(--rasp);padding:10px 12px}
+.article tbody td{padding:9px 12px;border-bottom:.5px solid var(--border);color:#E2E2DF}
+.article tbody tr:first-child td{color:var(--light);font-weight:600}
+.article th:not(:first-child),.article td:not(:first-child){text-align:right}
+.article blockquote{border-left:3px solid var(--rasp);padding:2px 0 2px 18px;margin:0 0 18px;color:var(--muted)}
