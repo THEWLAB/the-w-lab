@@ -1,9 +1,16 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series · The W Lab</title>
 <meta name="description" content="An interactive tool that rebuilds every possession of Dream vs Valkyries from the official play-by-play. After 610 possessions, one number keeps deciding a 2–2 series: pace.">
+<meta property="og:title" content="We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series">
+<meta property="og:description" content="An interactive tool that rebuilds every possession of Dream vs Valkyries from the official play-by-play. After 610 possessions, one number keeps deciding a 2–2 series: pace.">
+<meta property="og:image" content="https://thewlab.github.io/the-w-lab/finals_pace_cover.png">
+<meta name="author" content="Tomás Costa">
 <link rel="icon" href="logo.png">
-<link rel="stylesheet" href="style.css">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
 <style>
 .embed{width:min(1040px,calc(100vw - 32px));margin:18px 0 10px 50%;transform:translateX(-50%)}
 .embed iframe{display:block;width:100%;height:860px;border:.5px solid var(--border);border-radius:12px;background:#0d0e10}
@@ -12,25 +19,30 @@
 .btn-open:hover{background:var(--rasp);text-decoration:none}
 .article ol{margin:0 0 18px 20px}.article ul{margin:0 0 18px 20px}
 .article li{margin-bottom:8px;font-size:16px;color:#E2E2DF}
-.article tbody tr:first-child td{color:#E2E2DF;font-weight:400}
+
 @media(max-width:640px){.embed iframe{height:640px}}
 </style>
-</head><body>
-<header class="site"><div class="wrap"><div class="bar">
-<a class="brand" href="index.html"><img src="logo.png" alt="The W Lab"><b>THE W LAB</b></a>
-<nav><a href="index.html">Home</a><a href="https://instagram.com/the.w.lab" target="_blank">Instagram</a></nav>
-</div></div></header>
-<article class="article">
-<a class="back" href="index.html">← all articles</a>
-<header class="post">
-<span class="tag">Analytics · Tool · WNBA Finals</span>
-<h1>We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series</h1>
-<p class="dek">An interactive tool that rebuilds every possession of Dream vs Valkyries from the official play-by-play. After 610 possessions, one number keeps deciding a 2–2 series: pace.</p>
-<p class="byline">Tomás Costa · 2026-10-26</p>
-</header>
-<a href="https://tomascosta7.github.io/wnba-finals-possession-lab/" target="_blank"><img alt="The WNBA Finals Possession Lab" src="finals_pace_cover.png" /></a>
-<p class="byline" style="margin-top:0">The WNBA Finals Possession Lab — built for this series. <a href="https://tomascosta7.github.io/wnba-finals-possession-lab/" target="_blank">Try it live →</a></p>
+</head>
+<body data-page="article" data-slug="finals-pace">
+<div id="wl-ticker"></div>
+<div id="wl-header"></div>
 
+<section class="a-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="index.html#analysis">Analysis</a><span>/</span><span>WNBA Finals</span></div>
+  <div class="pills"><span>WNBA Finals</span><span>Analysis</span><span>Tool</span></div>
+  <h1>We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series</h1>
+  <p class="dek">An interactive tool that rebuilds every possession of Dream vs Valkyries from the official play-by-play. After 610 possessions, one number keeps deciding a 2–2 series: pace.</p>
+  <div class="byline">
+    <div class="author"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><span>26 Oct 2026 · <span id="readtime"></span></span></div></div>
+    <div class="share"><button class="btn line sm" id="copylink" type="button">Copy link</button><a class="btn line sm" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</div></section>
+
+<figure class="a-cover"><img src="finals_pace_cover.png" alt=""><figcaption>The WNBA Finals Possession Lab — built for this series. <a href="https://tomascosta7.github.io/wnba-finals-possession-lab/" target="_blank" rel="noopener">Try it live →</a></figcaption></figure>
+
+<div class="a-layout wrap">
+  <article class="a-body">
+    <div class="glance-m box"><h4>At a glance</h4><div class="glance"><div><b>610</b><span>possessions rebuilt from the official play-by-play</span></div><div><b>36</b><span>points per 100 possessions between Atlanta's best and worst game</span></div><div><b>2–0</b><span>Golden State's record when the pace stays below 76</span></div></div></div>
 <p>Four games in, the WNBA Finals are level. Golden State took Game 1 by four. Atlanta answered with a 14-point win and then a 26-point blowout. Golden State tied it again on Saturday, 67–62.</p>
 <p>The scorelines look random. They aren't. Once you stop counting points and start counting <strong>possessions</strong>, the series has a very clear shape — and one variable that keeps deciding which way it goes.</p>
 <p>To see it, I built a tool: the <strong>WNBA Finals Possession Lab</strong>. It takes the official play-by-play, rebuilds every possession of the series and measures both teams per 100 possessions. You can explore it yourself further down this page.</p>
@@ -47,13 +59,13 @@
 </ul>
 
 <h2>Part 1 — Two offenses, two personalities</h2>
-<p><img alt="Offensive efficiency by game, Atlanta Dream vs Golden State Valkyries" src="finals_pace_02.png" /></p>
+<p><img alt="Offensive efficiency by game, Atlanta Dream vs Golden State Valkyries" src="finals_pace_02.png" loading="lazy" /></p>
 <p><strong>Golden State is the most predictable team in this series.</strong> Its offense has scored between 84 and 93 points per 100 possessions in all four games. Win or lose, the Valkyries look the same: a grind, a low ceiling, a high floor.</p>
 <p><strong>Atlanta is the opposite.</strong> The Dream went from 85.3 in Game 1 to 121.3 in Game 3 — a 36-point swing in efficiency over three games. When their offense is on, nobody in this series is close. When it isn't, they score like Golden State, and Golden State is better at winning those games.</p>
 <p>Defensively, the mirror holds. Golden State's defense held Atlanta to 85 and 86 in its two wins. In Atlanta's two wins, it allowed 100 and 121. The Valkyries don't need to outscore anyone — they need the game to stay ugly.</p>
 
 <h2>Part 2 — Slow games go to Golden State</h2>
-<p><img alt="Pace by game, coloured by the winning team" src="finals_pace_03.png" /></p>
+<p><img alt="Pace by game, coloured by the winning team" src="finals_pace_03.png" loading="lazy" /></p>
 <p>Here is the pattern. The series average is <strong>76.3 possessions per 40 minutes</strong>. Golden State won the two games played below it (75 and 72). Atlanta won the two played above it (78 and 80).</p>
 <p>Game 3 was the fastest game of the series and the most lopsided: Atlanta 97–71, with an offensive efficiency of 126 in the third quarter and 130 in the fourth. Game 4 was the slowest, and the Dream never found that gear.</p>
 
@@ -73,7 +85,7 @@
 <p>And the shooting follows. Atlanta's effective field goal percentage (eFG%, which gives an extra half-point of weight to three-pointers) was 55.8% in Game 3 — and between 36% and 40% in the other three games. Atlanta doesn't win by shooting better in the half court. It wins by getting out in transition after stops, and the quickest way to get there is a Golden State turnover.</p>
 
 <h2>The verdict</h2>
-<p><img alt="Pace versus Atlanta net rating, by game" src="finals_pace_04.png" /></p>
+<p><img alt="Pace versus Atlanta net rating, by game" src="finals_pace_04.png" loading="lazy" /></p>
 <p>Put pace on one axis and Atlanta's net rating — offensive efficiency minus defensive efficiency — on the other, and the four games line up almost perfectly. <strong>The faster the game, the better Atlanta gets.</strong> At pace 72, the Dream were −6.9. At pace 80, they were +32.5.</p>
 <p>That makes Game 5 a tactical question more than a talent one. Golden State wants long possessions, set defense and a game in the low 70s — and the way to get it is to keep its turnover rate near 13%. Atlanta wants stops that turn into transition and a game near 80. Whoever drags the other team into their tempo has won every game so far.</p>
 <p><strong>Three numbers to watch tonight:</strong> pace above or below 76, Golden State's turnovers (around 10 or around 18), and whether Atlanta's eFG% climbs past 40%.</p>
@@ -110,14 +122,23 @@
 <li><strong>By quarter.</strong> Points, possessions and offensive efficiency in every quarter, with the better offense highlighted. Game 2's third quarter — Golden State, 9 points on 21 possessions — jumps out immediately.</li>
 <li><strong>The possession viewer.</strong> Filter by team and outcome (made 2, made 3, and-one, free throws, missed, turnover) and open any possession to see the events that built it, with the clock and the score at that moment.</li>
 </ol>
-<p><img alt="The possession viewer inside the WNBA Finals Possession Lab" src="finals_pace_tool.png" /></p>
+<p><img alt="The possession viewer inside the WNBA Finals Possession Lab" src="finals_pace_tool.png" loading="lazy" /></p>
 <p>The tool updates as the series goes on: every new game's play-by-play can be loaded straight into it. The code and data are open on <a href="https://github.com/tomascosta7/wnba-finals-possession-lab" target="_blank">GitHub</a>.</p>
 <p>Game 5 tonight. Watch the pace.</p>
-<hr />
-<p><em>The W Lab · Women's basketball, decoded by the numbers · <a href="https://instagram.com/the.w.lab">@the.w.lab</a> · Independent analysis, not affiliated with the WNBA or its teams.</em></p>
-</article>
-<footer class="site"><div class="wrap"><div class="foot">
-<div class="brand"><img src="logo.png" style="width:44px" alt=""><b>THE W LAB</b></div>
-<span>Women's basketball, decoded by the numbers · @the.w.lab</span>
-</div></div></footer>
+
+  </article>
+  <aside class="a-side"><div class="stick">
+    <div class="box"><h4>At a glance</h4><div class="glance"><div><b>610</b><span>possessions rebuilt from the official play-by-play</span></div><div><b>36</b><span>points per 100 possessions between Atlanta's best and worst game</span></div><div><b>2–0</b><span>Golden State's record when the pace stays below 76</span></div></div></div>
+    <div class="box"><h4>In this article</h4><nav class="toc" id="toc"></nav></div>
+    <div class="box toolbox"><h4>Interactive tool</h4><p>Explore every possession of the Finals yourself.</p><a class="btn sm" href="https://tomascosta7.github.io/wnba-finals-possession-lab/" target="_blank" rel="noopener">Open the Possession Lab →</a></div>
+  </div></aside>
+</div>
+
+<section class="a-end wrap">
+  <div class="authorcard"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><p>Founder of The W Lab and Sports Analytics master's student in Madrid. Women's basketball, decoded by the numbers.</p></div><a class="btn" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Follow @the.w.lab</a></div>
+  <div class="more"><span class="kicker">Keep reading</span><h3>More from The W Lab</h3><div class="grid" id="more"></div></div>
+</section>
+
+<div id="wl-footer"></div>
+<script src="site.js"></script>
 </body></html>

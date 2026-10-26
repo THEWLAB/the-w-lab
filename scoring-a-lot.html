@@ -1,26 +1,42 @@
-<!DOCTYPE html><html lang="en"><head>
+<!DOCTYPE html>
+<html lang="en"><head>
 <meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Scoring a Lot Isn't Scoring Well · The W Lab</title>
+<title>Scoring a Lot Isn&#x27;t Scoring Well · The W Lab</title>
 <meta name="description" content="What True Shooting % reveals about the WNBA's top 10 scorers in 2026 — and what the points totals quietly hide.">
+<meta property="og:title" content="Scoring a Lot Isn&#x27;t Scoring Well">
+<meta property="og:description" content="What True Shooting % reveals about the WNBA's top 10 scorers in 2026 — and what the points totals quietly hide.">
+<meta property="og:image" content="https://thewlab.github.io/the-w-lab/ts-vs-points.png">
+<meta name="author" content="Tomás Costa">
 <link rel="icon" href="logo.png">
-<link rel="stylesheet" href="style.css">
-</head><body>
-<header class="site"><div class="wrap"><div class="bar">
-  <a class="brand" href="index.html"><img src="logo.png" alt="The W Lab"><b>THE W LAB</b></a>
-  <nav><a href="index.html">Home</a><a href="https://instagram.com/the.w.lab" target="_blank">Instagram</a></nav>
-</div></div></header>
-<article class="article">
-  <a class="back" href="index.html">← all articles</a>
-  <header class="post">
-    <span class="tag">Analytics</span>
-    <h1>Scoring a Lot Isn't Scoring Well</h1>
-    <p class="dek">What True Shooting % reveals about the WNBA's top 10 scorers in 2026 — and what the points totals quietly hide.</p>
-    <p class="byline">Tomás Costa · 2026-06-29</p>
-  </header>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+
+</head>
+<body data-page="article" data-slug="scoring-a-lot">
+<div id="wl-ticker"></div>
+<div id="wl-header"></div>
+
+<section class="a-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="index.html#analysis">Analysis</a><span>/</span><span>WNBA</span></div>
+  <div class="pills"><span>WNBA</span><span>Shooting</span><span>Analysis</span></div>
   <h1>Scoring a Lot Isn't Scoring Well</h1>
+  <p class="dek">What True Shooting % reveals about the WNBA's top 10 scorers in 2026 — and what the points totals quietly hide.</p>
+  <div class="byline">
+    <div class="author"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><span>29 Jun 2026 · <span id="readtime"></span></span></div></div>
+    <div class="share"><button class="btn line sm" id="copylink" type="button">Copy link</button><a class="btn line sm" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</div></section>
+
+<figure class="a-cover"><img src="ts-vs-points.png" alt=""><figcaption>Top 10 WNBA scorers in 2026: points per game vs. True Shooting %.</figcaption></figure>
+
+<div class="a-layout wrap">
+  <article class="a-body">
+    <div class="glance-m box"><h4>At a glance</h4><div class="glance"><div><b>65.2%</b><span>Kelsey Plum's True Shooting — best of the top 10</span></div><div><b>60%</b><span>the group average, the honest benchmark</span></div><div><b>53.0%</b><span>Kahleah Copper — the lowest mark in the top 10</span></div></div></div>
+<h1>Scoring a Lot Isn't Scoring Well</h1>
 <p>Open any WNBA highlight reel and the framing is always the same: <em>who dropped the most points?</em> It's the number that leads the broadcast, tops the leaderboard, and wins the argument at the bar. But points per game answers a smaller question than people think. It tells you who <strong>shoots</strong>. It doesn't tell you who <strong>scores well</strong>.</p>
 <p>Those are not the same thing — and the gap between them is where the actual analysis lives.</p>
-<p><img alt="Top 10 WNBA scorers in 2026: points per game vs. true shooting percentage" src="ts-vs-points.png" /></p>
+<p><img alt="Top 10 WNBA scorers in 2026: points per game vs. true shooting percentage" src="ts-vs-points.png" loading="lazy" /></p>
 <h2>The metric: True Shooting %</h2>
 <p>To separate volume from value, you need a number that rewards efficiency, not just attempts. That number is <strong>True Shooting % (TS%)</strong>. It folds two-pointers, three-pointers, and free throws into a single figure: how many points a player produces per scoring possession used.</p>
 <p>The beauty of it is that it quietly does the math the box score won't. A three-pointer counts the same as a two on the <em>attempt</em> side, but pays out an extra point — so TS% automatically credits the players who turn volume into points instead of just chucking. A guard living at the free-throw line gets credit too. One number, no excuses.</p>
@@ -49,9 +65,19 @@
 <hr />
 <p><em>Methodology: per-game data pulled from Basketball-Reference (2026 WNBA season) and processed in Python (pandas). True Shooting % computed as PTS / (2 × (FGA + 0.44 × FTA)), filtered to players averaging 16+ points per game and ranked by scoring volume. Group average reflects the top 10 scorers shown.</em></p>
 <p><em>— The W Lab</em></p>
-</article>
-<footer class="site"><div class="wrap"><div class="foot">
-  <div class="brand"><img src="logo.png" style="width:44px" alt=""><b>THE W LAB</b></div>
-  <span>Women's basketball, decoded by the numbers · @the.w.lab</span>
-</div></div></footer>
+  </article>
+  <aside class="a-side"><div class="stick">
+    <div class="box"><h4>At a glance</h4><div class="glance"><div><b>65.2%</b><span>Kelsey Plum's True Shooting — best of the top 10</span></div><div><b>60%</b><span>the group average, the honest benchmark</span></div><div><b>53.0%</b><span>Kahleah Copper — the lowest mark in the top 10</span></div></div></div>
+    <div class="box"><h4>In this article</h4><nav class="toc" id="toc"></nav></div>
+    
+  </div></aside>
+</div>
+
+<section class="a-end wrap">
+  <div class="authorcard"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><p>Founder of The W Lab and Sports Analytics master's student in Madrid. Women's basketball, decoded by the numbers.</p></div><a class="btn" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Follow @the.w.lab</a></div>
+  <div class="more"><span class="kicker">Keep reading</span><h3>More from The W Lab</h3><div class="grid" id="more"></div></div>
+</section>
+
+<div id="wl-footer"></div>
+<script src="site.js"></script>
 </body></html>
