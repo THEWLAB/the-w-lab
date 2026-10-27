@@ -8,23 +8,23 @@
    ===================================================================== */
 window.WLAB = {
   TICKER: [
-    "<b>WNBA Finals</b> · Series tied <em>2–2</em>",
-    "<b>Game 5</b> · Dream at Valkyries · Chase Center · Mon 26 Oct · 8pm ET",
-    "<b>Game 4</b> · Valkyries 67–62 Dream",
+    "<b>WNBA Finals</b> · Valkyries lead <em>3–2</em>",
+    "<b>Game 5</b> · Valkyries 64–55 Dream · pace <em>68.5</em>, slowest of the series",
+    "<b>Game 6</b> · Valkyries at Dream · Atlanta · Thu 29 Oct · 8pm ET",
+    "Golden State is <em>3–0</em> when the pace stays below 76",
     "<b>Game 3</b> · Dream 97–71 Valkyries · Atlanta offense <em>121.3</em> per 100",
-    "Golden State is <em>2–0</em> when the pace stays below 76",
     "<b>New on The W Lab</b> · We built a Possession Lab for the Finals",
     "<b>Kelsey Plum</b> · <em>65.2%</em> True Shooting, best among the top 10 scorers",
     "<b>Spain</b> · <em>10</em> U20 Women's EuroBasket titles in 22 editions"
   ],
   SERIES: {
-    results: ["GSV 68–64","ATL 79–65","ATL 97–71","GSV 67–62"],
-    next: { label:"Game 5", where:"Dream at Valkyries · Chase Center", tipoff:"2026-10-27T00:00:00Z" } // 8pm ET Mon 26 Oct
+    results: ["GSV 68–64","ATL 79–65","ATL 97–71","GSV 67–62","GSV 64–55"],
+    next: { label:"Game 6", where:"Valkyries at Dream · Atlanta", tipoff:"2026-10-30T00:00:00Z" } // 8pm ET Thu 29 Oct
   },
   ARTICLES: [
     { slug:"finals-pace", href:"finals-pace.html", img:"finals_pace_thumb.png", tags:["WNBA","Tool"], date:"26 Oct 2026",
       title:"We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series",
-      dek:"610 possessions, one number that keeps deciding a 2–2 series." },
+      dek:"747 possessions, one number that keeps deciding the series. Updated after Game 5." },
     { slug:"talent-pipeline", href:"talent-pipeline.html", img:"U20W_pipeline_04.png", tags:["Europe","FIBA"], date:"3 Jul 2026",
       title:"Produced, Not Promised: What 25 Years of U20 Medals Say About Senior Success",
       dek:"Does dominating Europe's youth game predict anything at senior level?" },
