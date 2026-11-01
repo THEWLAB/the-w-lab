@@ -23,6 +23,9 @@ window.WLAB = {
     champion: { team:"Golden State Valkyries", line:"Won 4–3 · Game 7 at Chase Center, 31 Oct" }
   },
   ARTICLES: [
+    { slug:"shot-lab", href:"shot-lab.html", img:"shot_lab_thumb.png", tags:["WNBA","Tool"], date:"1 Nov 2026",
+      title:"We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions",
+      dek:"Every shot of Dream vs Valkyries, tied to its possession and to who was on the floor." },
     { slug:"finals-pace", href:"finals-pace.html", img:"finals_pace_thumb.png", tags:["WNBA","Tool"], date:"26 Oct 2026",
       title:"We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series",
       dek:"1,045 possessions, seven games, one number that decided them all." },
@@ -35,6 +38,8 @@ window.WLAB = {
   ],
   TOOL_URL:"https://tomascosta7.github.io/wnba-finals-possession-lab/",
   GITHUB_URL:"https://github.com/tomascosta7/wnba-finals-possession-lab",
+  SHOT_URL:"https://tomascosta7.github.io/wnba_finals_shot_lab/",
+  SHOT_GITHUB:"https://github.com/tomascosta7/wnba_finals_shot_lab",
   INSTAGRAM:"https://instagram.com/the.w.lab"
 };
 /* ======================== end of EDIT HERE ======================== */
@@ -71,7 +76,7 @@ window.WLAB = {
     <div class="fgrid">
       <div><a class="brand" href="index.html"><img src="logo.png" alt=""><b>THE W LAB</b></a><p>Women's basketball, decoded by the numbers.</p></div>
       <div><h4>Analysis</h4>${W.ARTICLES.map(a=>`<a href="${a.href}">${a.title.split(':')[0].split(' — ')[0]}</a>`).join('')}</div>
-      <div><h4>Tools</h4><a href="${W.TOOL_URL}" target="_blank" rel="noopener">Possession Lab</a><a href="${W.GITHUB_URL}" target="_blank" rel="noopener">GitHub</a></div>
+      <div><h4>Tools</h4><a href="${W.TOOL_URL}" target="_blank" rel="noopener">Possession Lab</a><a href="${W.SHOT_URL}" target="_blank" rel="noopener">Shot Lab</a><a href="${W.GITHUB_URL}" target="_blank" rel="noopener">GitHub</a></div>
       <div><h4>Follow</h4><a href="${W.INSTAGRAM}" target="_blank" rel="noopener">Instagram</a></div>
     </div>
     <div class="fbottom"><span>© 2026 The W Lab · Tomás Costa</span><span>Independent analysis · not affiliated with the WNBA or its teams</span></div>
@@ -107,7 +112,7 @@ window.WLAB = {
 
   // keep reading
   const more=$('#more');
-  if(more){more.innerHTML=W.ARTICLES.filter(a=>a.slug!==slug).slice(0,3).map(a=>`<a class="card" href="${a.href}">
+  if(more){more.innerHTML=W.ARTICLES.filter(a=>a.slug!==slug).slice(0,2).map(a=>`<a class="card" href="${a.href}">
       <div class="th"><img src="${a.img}" alt=""></div>
       <div class="bd"><div class="tags">${a.tags.map(x=>`<span>${x}</span>`).join('')}</div><h3>${a.title}</h3><p>${a.dek}</p><span class="meta">${a.date}</span></div></a>`).join('')
       +`<a class="card" href="${W.TOOL_URL}" target="_blank" rel="noopener">

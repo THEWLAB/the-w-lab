@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions · The W Lab</title>
+<meta name="description" content="A new interactive tool puts every shot of Dream vs Valkyries on the court, ties it to the possession it came from and rebuilds who was on the floor. The champions won the slow, late-clock basketball.">
+<meta property="og:title" content="We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions">
+<meta property="og:description" content="A new interactive tool puts every shot of Dream vs Valkyries on the court, ties it to the possession it came from and rebuilds who was on the floor. The champions won the slow, late-clock basketball.">
+<meta property="og:image" content="https://thewlab.github.io/the-w-lab/shot_lab_cover.png">
+<meta name="author" content="Tomás Costa">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+.embed{width:min(1040px,calc(100vw - 32px));margin:18px 0 10px 50%;transform:translateX(-50%)}
+.embed iframe{display:block;width:100%;height:860px;border:.5px solid var(--border);border-radius:12px;background:#0d0e10}
+.embed .cap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:10px;font-family:ui-monospace,monospace;font-size:12.5px;color:var(--muted)}
+.btn-open{display:inline-block;border:1px solid var(--rasp);color:var(--light);padding:10px 16px;border-radius:8px;font-weight:600;font-size:14px;margin:4px 0 18px}
+.btn-open:hover{background:var(--rasp);text-decoration:none}
+.article ol{margin:0 0 18px 20px}.article ul{margin:0 0 18px 20px}
+.article li{margin-bottom:8px;font-size:16px;color:#E2E2DF}
+
+@media(max-width:640px){.embed iframe{height:640px}}
+</style>
+</head>
+<body data-page="article" data-slug="shot-lab">
+<div id="wl-ticker"></div>
+<div id="wl-header"></div>
+
+<section class="a-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="index.html#analysis">Analysis</a><span>/</span><span>WNBA Finals</span></div>
+  <div class="pills"><span>WNBA Finals</span><span>Tracking</span><span>Tool</span></div>
+  <h1>We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions</h1>
+  <p class="dek">A new interactive tool puts every shot of Dream vs Valkyries on the court, ties it to the possession it came from and rebuilds who was on the floor. The champions won the slow, late-clock basketball.</p>
+  <div class="byline">
+    <div class="author"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><span>1 Nov 2026 · <span id="readtime"></span></span></div></div>
+    <div class="share"><button class="btn line sm" id="copylink" type="button">Copy link</button><a class="btn line sm" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</div></section>
+
+<figure class="a-cover"><img src="shot_lab_cover.png" alt="The WNBA Finals Shot Lab"><figcaption>The WNBA Finals Shot Lab — every shot of the series, with its possession. <a href="https://tomascosta7.github.io/wnba_finals_shot_lab/" target="_blank" rel="noopener">Try it live →</a></figcaption></figure>
+
+<div class="a-layout wrap">
+  <article class="a-body">
+    <div class="glance-m box"><h4>At a glance</h4><div class="glance"><div><b>920</b><span>shots on the court, every one matched to its play-by-play event</span></div><div><b>58%</b><span>of Golden State's shots came 16+ seconds into a possession (Atlanta: 43%)</span></div><div><b>99%</b><span>of 1,045 possessions with both lineups identified</span></div></div></div>
+<p>Golden State Valkyries are the 2026 WNBA champions. They beat the Atlanta Dream 4–3, and the <a href="finals-pace.html">Possession Lab</a> showed the rule that decided it: <strong>Golden State won all four games played below 76 possessions, Atlanta all three above.</strong></p>
+<p>Pace tells you <em>that</em> the tempo mattered. It doesn't tell you <em>where</em> on the court, or <em>when</em> in a possession, the series was won. So I built a second tool: the <strong>WNBA Finals Shot Lab</strong>. It takes the league's shot tracking — the x, y position of every field goal attempt — and ties each of the 920 shots to the possession it came from: how many seconds had passed since the team got the ball, how that possession started, and whether it was already a second chance. Then it rebuilds who was on the floor for every possession.</p>
+<p>You can explore it yourself further down this page. Here's what it shows.</p>
+
+<h2>Part 1 — Two teams, almost the same shooting</h2>
+<p><img alt="Shot chart and shot zones, Games 1–7" src="shot_lab_chart.png" loading="lazy" /></p>
+<p>Over seven games the two offenses ended up almost level. Atlanta's effective field goal percentage was <strong>42.1%</strong>, Golden State's <strong>40.0%</strong>. Both shot 26–27% from three on more than 180 attempts each — a cold series from deep. Both scored about <strong>0.95 points per shot at the rim</strong>.</p>
+<table>
+<thead><tr><th>Zone</th><th>ATL share</th><th>ATL PPS</th><th>GSV share</th><th>GSV PPS</th></tr></thead>
+<tbody>
+<tr><td>At the rim</td><td>37%</td><td>0.94</td><td>33%</td><td>0.96</td></tr>
+<tr><td>Paint, non-rim</td><td>9%</td><td>0.65</td><td>12%</td><td>0.58</td></tr>
+<tr><td>Mid-range</td><td>13%</td><td>0.80</td><td>16%</td><td>0.68</td></tr>
+<tr><td>Corner 3</td><td>3%</td><td>0.80</td><td>5%</td><td>1.30</td></tr>
+<tr><td>Above-the-break 3</td><td>37%</td><td>0.81</td><td>34%</td><td>0.71</td></tr>
+</tbody></table>
+<p>The one real gap in shot quality is small in volume: Golden State's <strong>corner threes</strong> (23 attempts, 1.30 points per shot). The shot charts don't explain a 4–3 series on their own. The clock does.</p>
+
+<h2>Part 2 — The possession clock</h2>
+<p><img alt="Points per shot by seconds into the possession" src="shot_lab_clock.png" loading="lazy" /></p>
+<p>Every shot in the Shot Lab carries a timestamp inside its possession. Both teams were clearly better early: Atlanta scored <strong>0.91 points per shot in the first 15 seconds</strong> and 0.75 after that; Golden State 0.91 and 0.72. The late-clock shot is the worst shot in basketball, for everyone.</p>
+<p>The difference is <strong>who lived there</strong>. Golden State took <strong>58% of its shots 16 seconds or more into a possession</strong>. Atlanta took 43%. And game by game, the share tracks the result:</p>
+<table>
+<thead><tr><th>Game</th><th>Pace</th><th>GSV shots at 16+ s</th><th>ATL shots at 16+ s</th><th>Winner</th></tr></thead>
+<tbody>
+<tr><td>G1</td><td>75</td><td>58%</td><td>44%</td><td>GSV</td></tr>
+<tr><td>G2</td><td>78</td><td>52%</td><td>45%</td><td>ATL</td></tr>
+<tr><td>G3</td><td>80</td><td>51%</td><td>35%</td><td>ATL</td></tr>
+<tr><td>G4</td><td>72</td><td>56%</td><td>46%</td><td>GSV</td></tr>
+<tr><td>G5</td><td>68.5</td><td>72%</td><td>38%</td><td>GSV</td></tr>
+<tr><td>G6</td><td>77.5</td><td>54%</td><td>52%</td><td>ATL</td></tr>
+<tr><td>G7</td><td>71.5</td><td>69%</td><td>42%</td><td>GSV</td></tr>
+</tbody></table>
+<p>In all four Golden State wins, <strong>56% or more</strong> of its shots came late in the clock. In its three losses, 51–54%. Golden State didn't win by shooting better late — nobody did. It won by dragging the games into long possessions, where Atlanta's offense lost its edge too.</p>
+<p>The early edge that looked decisive after Game 5 shrank by the end. Through five games Atlanta scored 1.11 points per shot in the first 7 seconds of a possession; in Game 7 its 14 early shots produced only 0.43 each, and over the series it settled at 0.96. Atlanta also scored best <strong>after a steal</strong> (1.05 points per shot on 41 shots) — the fastest kind of possession there is.</p>
+
+<h2>Part 3 — Who was on the floor</h2>
+<p>The WNBA doesn't publish optical player tracking, so the Shot Lab builds its own on-court tracking from the substitutions in the play-by-play. Both lineups are identified for <strong>99% of the 1,045 possessions</strong>, which gives every player an on/off rating: how the team did per 100 possessions with her on the floor, against with her off.</p>
+<p><img alt="On/off ratings and lineups" src="shot_lab_oncourt.png" loading="lazy" /></p>
+<ul>
+<li><strong>Cecilia Zandalasini</strong> was Golden State's biggest swing: <strong>+30.8</strong> per 100 possessions on vs off. Gabby Williams (+23.8) and Veronica Burton (+22.6) follow.</li>
+<li>For Atlanta, <strong>Angel Reese</strong> (+19.9) and <strong>Naz Hillmon</strong> (+17.0) top the list.</li>
+<li>Golden State's most-used lineup (Hayes, Stokes, Williams, Charles, Burton) was <strong>−25.2</strong> over 119 possessions. Swap Hayes for Zandalasini and the same group was <strong>+73.1</strong> in 82 possessions.</li>
+<li>Atlanta's starting five (Gray, Canada, Howard, Hillmon, Reese) played 200 possessions together and finished <strong>+4.9</strong>.</li>
+</ul>
+
+<h2>What this doesn't tell us</h2>
+<ul>
+<li><strong>Seven games is a small sample.</strong> On/off and lineup numbers swing a lot on a few dozen possessions. Read them as signals, not verdicts.</li>
+<li><strong>This is shot tracking, not player tracking.</strong> We know where each shot came from and who was on the floor, not where the defenders were. The league's tracking endpoints for closest defender, touches and matchups return no data for the WNBA.</li>
+<li><strong>Late shots aren't always chosen.</strong> A late-clock shot can come from good defense as much as from a slow offense. That's exactly why it favoured the team that wanted slow games.</li>
+<li><strong>Game 5 coordinates.</strong> The league's shot locations for Game 5 sit a couple of feet off the rim on layups, so "at the rim" also uses the shot type (layups, putbacks, tips within 8 ft).</li>
+</ul>
+
+<h2>Methodology</h2>
+<ul>
+<li><strong>Data:</strong> official shot chart (shotchartdetail: x, y, distance, zone and result of every field goal attempt) and play-by-play (PlayByPlayV3) of all seven games from the WNBA stats API — 920 shots, 2,953 events.</li>
+<li><strong>Matching:</strong> each shot is matched to its play-by-play event by game, quarter, player, result and clock (±1 second). All 920 match.</li>
+<li><strong>Possession context:</strong> seconds into possession = shot time minus the moment the team got the ball (defensive rebound, turnover, made basket or start of a quarter). Second chance = the possession already had an offensive rebound.</li>
+<li><strong>On-court tracking:</strong> the starters of each quarter are the players who act before being subbed in; a player with no event in a whole stint is carried over from the previous or next quarter. On/off = team net rating per 100 possessions with the player on the floor minus with her off.</li>
+<li><strong>Metrics:</strong> points per shot (PPS) = points from field goals ÷ attempts; eFG% = (field goals made + 0.5 × threes made) ÷ attempts.</li>
+</ul>
+
+<h2>Explore every shot</h2>
+<p>Everything in this piece comes from the <strong>WNBA Finals Shot Lab</strong>, the second tool I built from this series for my Master's in Sports Analytics at Escuela Universitaria Real Madrid – Universidad Europea. It runs right here — filter by game, team, player, quarter or possession clock and hover any shot.</p>
+<div class="embed">
+<iframe src="https://tomascosta7.github.io/wnba_finals_shot_lab/" title="WNBA Finals Shot Lab" loading="lazy"></iframe>
+<div class="cap"><span>WNBA Finals Shot Lab · live tool</span><span>Scroll inside the frame to explore</span></div>
+</div>
+<p><a class="btn-open" href="https://tomascosta7.github.io/wnba_finals_shot_lab/" target="_blank">Open the tool in full screen →</a></p>
+<p><strong>What you can do in it:</strong></p>
+<ol>
+<li><strong>The shot chart.</strong> All 920 attempts on the court, made or missed, or a zone heat map coloured by points per shot. Hover any shot to see the player, the clock and the possession it came from.</li>
+<li><strong>Shot zones.</strong> Share of attempts, field goal % and points per shot for each team at the rim, in the paint, from mid-range, from the corners and above the break.</li>
+<li><strong>The possession clock.</strong> Points per shot by seconds into the possession, and by how the possession started — defensive rebound, steal, made basket, dead-ball turnover.</li>
+<li><strong>Shot profile by game.</strong> Each team's shot mix in every game, next to that game's pace.</li>
+<li><strong>Players.</strong> Volume, efficiency, threes, rim attempts and early-clock shots for every player. Click one to put her shots on the chart.</li>
+<li><strong>On-court tracking.</strong> On/off ratings for every regular and the ratings of the most-used lineups.</li>
+</ol>
+<p><img alt="Shot profile by game in the WNBA Finals Shot Lab" src="shot_lab_profile.png" loading="lazy" /></p>
+<p>The code and data are open on <a href="https://github.com/tomascosta7/wnba_finals_shot_lab" target="_blank">GitHub</a>. Start with the <a href="finals-pace.html">Possession Lab</a> for the pace story, then come here to see where it happened.</p>
+
+  </article>
+  <aside class="a-side"><div class="stick">
+    <div class="box"><h4>At a glance</h4><div class="glance"><div><b>920</b><span>shots on the court, every one matched to its play-by-play event</span></div><div><b>58%</b><span>of Golden State's shots came 16+ seconds into a possession (Atlanta: 43%)</span></div><div><b>99%</b><span>of 1,045 possessions with both lineups identified</span></div></div></div>
+    <div class="box"><h4>In this article</h4><nav class="toc" id="toc"></nav></div>
+    <div class="box toolbox"><h4>Interactive tool</h4><p>Every shot of the Finals, with its possession.</p><a class="btn sm" href="https://tomascosta7.github.io/wnba_finals_shot_lab/" target="_blank" rel="noopener">Open the Shot Lab →</a></div>
+  </div></aside>
+</div>
+
+<section class="a-end wrap">
+  <div class="authorcard"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><p>Founder of The W Lab and Sports Analytics master's student in Madrid. Women's basketball, decoded by the numbers.</p></div><a class="btn" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Follow @the.w.lab</a></div>
+  <div class="more"><span class="kicker">Keep reading</span><h3>More from The W Lab</h3><div class="grid" id="more"></div></div>
+</section>
+
+<div id="wl-footer"></div>
+<script src="site.js"></script>
+</body></html>
