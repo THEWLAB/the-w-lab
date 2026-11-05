@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>From −19 to +2: How Valencia Finally Beat the European Champions · The W Lab</title>
+<meta name="description" content="Three weeks after losing 69–88 at home, Valencia won 73–71 in Istanbul — their first win over Fenerbahçe in eleven tries. Win probability, Four Factors and the assist network show what changed.">
+<meta property="og:title" content="From −19 to +2: How Valencia Finally Beat the European Champions">
+<meta property="og:description" content="Three weeks after losing 69–88 at home, Valencia won 73–71 in Istanbul — their first win over Fenerbahçe in eleven tries. Win probability, Four Factors and the assist network show what changed.">
+<meta property="og:image" content="https://thewlab.github.io/the-w-lab/fen_val_cover.png">
+<meta name="author" content="Tomás Costa">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+
+
+.mu{display:grid;gap:10px;margin:8px 0 26px}
+.mu .g{display:grid;grid-template-columns:auto 1fr auto 1fr;align-items:center;gap:14px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:14px 18px}
+.mu .lbl{white-space:nowrap;font:700 11px var(--mono);letter-spacing:1.5px;text-transform:uppercase;color:var(--muted);line-height:1.5}
+.mu .lbl b{display:block;color:var(--light);font-size:12px}
+.mu .lbl a{display:block;color:var(--rasp);letter-spacing:.5px;margin-top:2px}
+.mu .t{display:flex;align-items:center;gap:10px;font-weight:700;font-size:15px;min-width:0}
+.mu .t.r{justify-content:flex-end;text-align:right}
+.mu .t img{height:40px;width:auto}
+.mu .sc{font:800 22px var(--sans);letter-spacing:-.5px;white-space:nowrap}
+.mu .sc .w{color:var(--light)} .mu .sc .l{color:var(--muted)}
+.mu .lk{display:flex;flex-direction:column;gap:4px;font:600 12px var(--mono);text-align:right;line-height:1.4;white-space:nowrap}
+.mu .lk a{color:var(--rasp)}
+@media (max-width:640px){.mu .g{grid-template-columns:1fr auto 1fr;row-gap:10px}.mu .lbl{white-space:normal;grid-column:1/-1;display:flex;gap:10px;flex-wrap:wrap;align-items:baseline}.mu .lbl b,.mu .lbl a{display:inline;margin:0}.mu .t{font-size:13px}.mu .t img{height:32px}.mu .g{padding:12px 14px;gap:10px}.mu .sc{font-size:19px}}
+.players{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px;margin:20px 0 10px}
+.pc{background:var(--surface);border:1px solid var(--border);border-radius:14px;overflow:hidden;display:flex;flex-direction:column}
+.pc .ph{position:relative;aspect-ratio:1/1;background:#1C1C22}
+.pc .ph img.hs{width:100%;height:100%;object-fit:cover;display:block}
+.pc .ph img.lg{position:absolute;right:10px;bottom:10px;height:34px;width:auto;filter:drop-shadow(0 2px 6px rgba(0,0,0,.6))}
+.pc .tx{padding:12px 14px 14px;display:flex;flex-direction:column;gap:4px}
+.pc .tx b{font-size:15.5px;line-height:1.25}
+.pc .tx .ln{font:700 13px var(--mono);color:var(--rasp)}
+.pc .tx .d{font-size:13px;color:var(--muted);line-height:1.45}
+@media (max-width:760px){.players{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.credit{font:12px var(--mono);color:var(--dim);margin-top:6px}
+.credit a{color:var(--muted)}
+
+.wide{margin:22px 0 8px}
+.wide img{display:block;width:100%;border-radius:12px;border:.5px solid var(--border)}
+.wide figcaption{font-family:ui-monospace,monospace;font-size:12.5px;color:var(--muted);margin-top:8px}
+.embed{width:min(1040px,calc(100vw - 32px));margin:18px 0 10px 50%;transform:translateX(-50%)}
+.embed iframe{display:block;width:100%;height:860px;border:.5px solid var(--border);border-radius:12px;background:#0d0e10}
+.embed .cap{display:flex;justify-content:space-between;flex-wrap:wrap;gap:8px;margin-top:10px;font-family:ui-monospace,monospace;font-size:12.5px;color:var(--muted)}
+.btn-open{display:inline-block;border:1px solid var(--rasp);color:var(--light);padding:10px 16px;border-radius:8px;font-weight:600;font-size:14px;margin:4px 0 18px}
+.btn-open:hover{background:var(--rasp);text-decoration:none}
+.article ol{margin:0 0 18px 20px}.article ul{margin:0 0 18px 20px}
+.article li{margin-bottom:8px;font-size:16px;color:#E2E2DF}
+
+@media(max-width:640px){.embed iframe{height:640px}}
+
+.fv{container-type:inline-size;position:relative;width:100%;aspect-ratio:16/9;max-width:100%;border-radius:16px;overflow:hidden;border:1px solid var(--border,#26262A);background:#0B0B0E;isolation:isolate;font-family:var(--sans,Inter,Arial,sans-serif);color:#F2F2EF}
+.fv .bgl{position:absolute;inset:0;z-index:-2;background:radial-gradient(48cqw 48cqw at 14% 40%,rgba(245,196,0,.22),transparent 62%),radial-gradient(48cqw 48cqw at 86% 40%,rgba(242,128,31,.28),transparent 62%),linear-gradient(90deg,#11132a 0%,#0B0B0E 50%,#1c1008 100%)}
+.fv .grain{position:absolute;inset:0;z-index:-1;background-image:repeating-linear-gradient(0deg,rgba(255,255,255,.022) 0 1px,transparent 1px 3px)}
+.fv .k{position:absolute;left:0;right:0;top:4.4cqw;text-align:center;font:700 max(8px,1.35cqw) var(--mono,ui-monospace,monospace);letter-spacing:.3cqw;text-transform:uppercase;color:#E61E63}
+.fv .k span{color:#9A9AA0}
+.fv .mid{position:absolute;left:0;right:0;top:8.6cqw;display:flex;justify-content:center;align-items:center;gap:4.5cqw}
+.fv .tm{display:flex;flex-direction:column;align-items:center;gap:1cqw;width:17cqw}
+.fv .tm img{height:14cqw!important;width:auto!important;max-width:none;border:0!important;border-radius:0!important;filter:drop-shadow(0 .6cqw 1.8cqw rgba(0,0,0,.6))}
+.fv .tm span{font:700 max(8px,1.3cqw) var(--mono,ui-monospace,monospace);letter-spacing:.2cqw;text-transform:uppercase;color:#C9C9C4}
+.fv .sc{display:flex;flex-direction:column;align-items:center;gap:.8cqw}
+.fv .sc b{font:800 10.5cqw/0.9 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.45cqw;white-space:nowrap}
+.fv .sc b i{font-style:normal;color:#F2801F}
+.fv .sc b em{font-style:normal;color:rgba(242,242,239,.4);margin:0 .8cqw}
+.fv .sc small{font:600 max(7.5px,1.25cqw) var(--mono,ui-monospace,monospace);letter-spacing:.15cqw;text-transform:uppercase;color:#9A9AA0}
+.fv .chart{position:absolute;left:5cqw;right:5cqw;bottom:4.2cqw;height:20cqw}
+.fv .chart svg{width:100%;height:100%;display:block;overflow:visible}
+.fv .chart .lb{position:absolute;font:600 max(7px,1.1cqw) var(--mono,ui-monospace,monospace);letter-spacing:.12cqw;text-transform:uppercase}
+.fv .chart .lt{left:0;top:-2.4cqw;color:#F5C400}
+.fv .chart .lbo{left:0;bottom:-2.6cqw;color:#9A9AA0}
+.fv .chart .rt{right:0;bottom:-2.6cqw;color:#9A9AA0;text-align:right}
+.fv h3{position:absolute;left:0;right:0;top:27.5cqw;margin:0;text-align:center;font:800 4.6cqw/1 var(--sans,Inter,Arial,sans-serif);letter-spacing:-.18cqw;z-index:2}
+.fv h3 span{color:#E61E63}
+@container (max-width:560px){.fv .chart .lb{display:none}.fv h3{font-size:6cqw;top:28cqw}.fv .tm span{display:none}.fv .sc b{font-size:12cqw}.fv .tm img{height:15cqw!important}}
+</style>
+</head>
+<body data-page="article" data-slug="fenerbahce-valencia">
+<div id="wl-ticker"></div>
+<div id="wl-header"></div>
+
+<section class="a-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="index.html#analysis">Analysis</a><span>/</span><span>EuroLeague Women</span></div>
+  <div class="pills"><span>EuroLeague Women</span><span>Win probability</span><span>Europe</span></div>
+  <h1>From −19 to +2: How Valencia Finally Beat the European Champions</h1>
+  <p class="dek">Three weeks after losing 69–88 at home, Valencia won 73–71 in Istanbul — their first win over Fenerbahçe in eleven tries. Win probability, Four Factors and the assist network show what changed.</p>
+  <div class="byline">
+    <div class="author"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><span>5 Nov 2026 · <span id="readtime"></span></span></div></div>
+    <div class="share"><button class="btn line sm" id="copylink" type="button">Copy link</button><a class="btn line sm" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</div></section>
+
+<figure class="a-cover"><div class="fv" role="img" aria-label="Fenerbahçe 71–73 Valencia, EuroLeague Women, 3 November 2026, with Fenerbahçe's win probability through the game">
+<div class="bgl"></div><div class="grain"></div>
+<div class="k">EuroLeague Women <span>· Group C · Round 4 · Istanbul</span></div>
+<div class="mid"><div class="tm"><img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_400/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe"><span>Fenerbahçe</span></div><div class="sc"><b>71<em>–</em><i>73</i></b><small>3 Nov 2026 · Final</small></div><div class="tm"><img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_400/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia Basket"><span>Valencia</span></div></div>
+<h3>From <span>−19</span> to <span>+2</span></h3>
+<div class="chart"><svg viewBox="0 0 1000 300" preserveAspectRatio="none" aria-hidden="true"><defs><linearGradient id="fvg" x1="0" x2="0" y1="0" y2="1"><stop offset="0" stop-color="#F5C400" stop-opacity=".28"/><stop offset=".5" stop-color="#F5C400" stop-opacity=".05"/><stop offset=".5" stop-color="#F2801F" stop-opacity=".05"/><stop offset="1" stop-color="#F2801F" stop-opacity=".35"/></linearGradient></defs>
+<line x1="0" x2="1000" y1="150" y2="150" stroke="#F2F2EF" stroke-opacity=".25" stroke-dasharray="6 6" vector-effect="non-scaling-stroke"/>
+<line x1="250" x2="250" y1="0" y2="300" stroke="#F2F2EF" stroke-opacity=".08" vector-effect="non-scaling-stroke"/><line x1="500" x2="500" y1="0" y2="300" stroke="#F2F2EF" stroke-opacity=".08" vector-effect="non-scaling-stroke"/><line x1="750" x2="750" y1="0" y2="300" stroke="#F2F2EF" stroke-opacity=".08" vector-effect="non-scaling-stroke"/>
+<polygon points="0,150 0.0,66.3 2.5,66.3 5.0,59.4 7.5,59.5 10.0,59.6 12.5,59.7 15.0,59.7 17.5,59.8 20.0,59.9 22.5,59.9 25.0,47.8 27.5,48.4 30.0,48.5 32.5,48.5 35.0,48.6 37.5,48.6 40.0,48.7 42.5,48.7 45.0,48.8 47.5,48.8 50.0,48.9 52.5,48.9 55.0,49.0 57.5,61.7 60.0,61.7 62.5,84.1 65.0,84.2 67.5,84.3 70.0,84.5 72.5,84.6 75.0,84.7 77.5,84.8 80.0,84.1 82.5,84.3 85.0,84.4 87.5,85.3 90.0,85.5 92.5,85.6 95.0,85.7 97.5,85.8 100.0,86.0 102.5,86.1 105.0,86.2 107.5,86.3 110.0,95.0 112.5,95.2 115.0,95.3 117.5,95.4 120.0,95.6 122.5,95.7 125.0,95.9 127.5,123.8 130.0,124.1 132.5,124.3 135.0,124.5 137.5,124.7 140.0,124.9 142.5,125.1 145.0,125.3 147.5,125.5 150.0,124.7 152.5,124.9 155.0,125.1 157.5,106.1 160.0,106.3 162.5,106.5 165.0,97.4 167.5,97.6 170.0,97.7 172.5,97.9 175.0,80.5 177.5,80.6 180.0,80.7 182.5,80.8 185.0,80.9 187.5,90.6 190.0,90.8 192.5,90.9 195.0,91.0 197.5,91.2 200.0,91.3 202.5,110.3 205.0,110.5 207.5,110.7 210.0,109.9 212.5,110.1 215.0,110.2 217.5,110.4 220.0,100.9 222.5,101.1 225.0,101.2 227.5,101.4 230.0,102.5 232.5,101.7 235.0,101.9 237.5,102.1 240.0,102.2 242.5,83.7 245.0,93.9 247.5,94.1 250.0,93.3 252.5,93.5 255.0,93.6 257.5,93.8 260.0,93.9 262.5,94.1 265.0,94.2 267.5,94.4 270.0,94.5 272.5,94.7 275.0,94.8 277.5,95.0 280.0,95.1 282.5,95.3 285.0,85.9 287.5,86.0 290.0,86.2 292.5,86.3 295.0,86.4 297.5,86.6 300.0,86.7 302.5,86.8 305.0,87.0 307.5,87.1 310.0,69.2 312.5,69.3 315.0,69.4 317.5,69.5 320.0,69.6 322.5,69.7 325.0,69.8 327.5,69.9 330.0,70.0 332.5,70.1 335.0,70.1 337.5,70.2 340.0,70.3 342.5,70.4 345.0,54.2 347.5,54.3 350.0,54.3 352.5,55.1 355.0,55.2 357.5,54.5 360.0,54.5 362.5,54.6 365.0,54.6 367.5,63.5 370.0,63.6 372.5,63.7 375.0,62.9 377.5,63.0 380.0,63.0 382.5,63.1 385.0,63.2 387.5,47.6 390.0,47.6 392.5,47.7 395.0,47.7 397.5,47.7 400.0,47.7 402.5,48.5 405.0,48.5 407.5,48.6 410.0,48.6 412.5,48.6 415.0,48.6 417.5,55.7 420.0,55.7 422.5,55.8 425.0,56.6 427.5,56.7 430.0,56.7 432.5,56.8 435.0,56.8 437.5,65.6 440.0,65.7 442.5,65.7 445.0,65.8 447.5,65.9 450.0,66.0 452.5,65.1 455.0,65.2 457.5,65.2 460.0,65.3 462.5,65.4 465.0,65.5 467.5,66.5 470.0,66.5 472.5,65.7 475.0,65.8 477.5,65.8 480.0,65.9 482.5,48.6 485.0,48.6 487.5,48.6 490.0,48.7 492.5,34.4 495.0,34.4 497.5,35.1 500.0,35.0 502.5,35.0 505.0,35.0 507.5,58.2 510.0,58.3 512.5,58.3 515.0,58.3 517.5,58.4 520.0,58.4 522.5,58.5 525.0,58.5 527.5,58.6 530.0,58.6 532.5,90.4 535.0,90.6 537.5,90.7 540.0,90.9 542.5,89.8 545.0,90.0 547.5,90.1 550.0,90.3 552.5,91.6 555.0,91.8 557.5,91.9 560.0,92.1 562.5,92.2 565.0,91.2 567.5,91.3 570.0,91.5 572.5,91.6 575.0,91.8 577.5,93.2 580.0,93.3 582.5,93.5 585.0,93.7 587.5,93.8 590.0,92.7 592.5,92.9 595.0,93.0 597.5,94.5 600.0,94.6 602.5,94.8 605.0,95.0 607.5,93.8 610.0,94.0 612.5,94.1 615.0,95.6 617.5,95.8 620.0,81.8 622.5,81.9 625.0,82.0 627.5,82.1 630.0,82.2 632.5,82.3 635.0,59.0 637.5,59.1 640.0,59.1 642.5,59.1 645.0,60.2 647.5,60.2 650.0,60.2 652.5,59.2 655.0,59.2 657.5,59.2 660.0,59.2 662.5,59.2 665.0,39.6 667.5,39.6 670.0,39.5 672.5,39.5 675.0,39.4 677.5,39.4 680.0,39.3 682.5,39.2 685.0,39.2 687.5,39.1 690.0,39.0 692.5,39.0 695.0,38.9 697.5,38.8 700.0,30.6 702.5,30.5 705.0,30.4 707.5,30.3 710.0,30.2 712.5,30.8 715.0,30.7 717.5,30.6 720.0,30.5 722.5,30.4 725.0,30.3 727.5,48.8 730.0,48.7 732.5,48.7 735.0,48.6 737.5,48.5 740.0,48.5 742.5,47.3 745.0,47.2 747.5,47.1 750.0,47.0 752.5,47.0 755.0,46.9 757.5,46.8 760.0,46.7 762.5,46.6 765.0,46.5 767.5,46.4 770.0,47.4 772.5,47.3 775.0,47.2 777.5,47.1 780.0,58.4 782.5,58.3 785.0,58.2 787.5,58.2 790.0,58.1 792.5,58.0 795.0,45.0 797.5,44.9 800.0,44.7 802.5,44.6 805.0,44.4 807.5,44.2 810.0,44.1 812.5,43.9 815.0,43.7 817.5,43.5 820.0,43.3 822.5,43.1 825.0,42.9 827.5,22.5 830.0,22.2 832.5,22.0 835.0,21.7 837.5,21.5 840.0,21.2 842.5,20.9 845.0,20.6 847.5,20.4 850.0,20.1 852.5,19.8 855.0,19.5 857.5,19.2 860.0,18.8 862.5,28.4 865.0,28.1 867.5,27.7 870.0,27.4 872.5,27.0 875.0,25.6 877.5,25.2 880.0,24.8 882.5,24.4 885.0,23.9 887.5,23.5 890.0,24.1 892.5,23.6 895.0,23.2 897.5,22.7 900.0,22.2 902.5,21.7 905.0,49.6 907.5,49.1 910.0,48.5 912.5,48.0 915.0,47.4 917.5,46.8 920.0,46.2 922.5,45.5 925.0,44.8 927.5,44.1 930.0,43.3 932.5,42.5 935.0,41.6 937.5,40.7 940.0,63.5 942.5,62.7 945.0,61.8 947.5,60.9 950.0,59.9 952.5,58.8 955.0,57.6 957.5,56.3 960.0,54.9 962.5,53.4 965.0,51.6 967.5,49.8 970.0,47.7 972.5,45.3 975.0,138.4 977.5,139.3 980.0,133.8 982.5,134.4 985.0,142.5 987.5,143.8 990.0,145.4 992.5,234.4 995.0,250.9 997.5,276.8 1000.0,300.0 1000,150" fill="url(#fvg)"/><polyline points="0.0,66.3 2.5,66.3 5.0,59.4 7.5,59.5 10.0,59.6 12.5,59.7 15.0,59.7 17.5,59.8 20.0,59.9 22.5,59.9 25.0,47.8 27.5,48.4 30.0,48.5 32.5,48.5 35.0,48.6 37.5,48.6 40.0,48.7 42.5,48.7 45.0,48.8 47.5,48.8 50.0,48.9 52.5,48.9 55.0,49.0 57.5,61.7 60.0,61.7 62.5,84.1 65.0,84.2 67.5,84.3 70.0,84.5 72.5,84.6 75.0,84.7 77.5,84.8 80.0,84.1 82.5,84.3 85.0,84.4 87.5,85.3 90.0,85.5 92.5,85.6 95.0,85.7 97.5,85.8 100.0,86.0 102.5,86.1 105.0,86.2 107.5,86.3 110.0,95.0 112.5,95.2 115.0,95.3 117.5,95.4 120.0,95.6 122.5,95.7 125.0,95.9 127.5,123.8 130.0,124.1 132.5,124.3 135.0,124.5 137.5,124.7 140.0,124.9 142.5,125.1 145.0,125.3 147.5,125.5 150.0,124.7 152.5,124.9 155.0,125.1 157.5,106.1 160.0,106.3 162.5,106.5 165.0,97.4 167.5,97.6 170.0,97.7 172.5,97.9 175.0,80.5 177.5,80.6 180.0,80.7 182.5,80.8 185.0,80.9 187.5,90.6 190.0,90.8 192.5,90.9 195.0,91.0 197.5,91.2 200.0,91.3 202.5,110.3 205.0,110.5 207.5,110.7 210.0,109.9 212.5,110.1 215.0,110.2 217.5,110.4 220.0,100.9 222.5,101.1 225.0,101.2 227.5,101.4 230.0,102.5 232.5,101.7 235.0,101.9 237.5,102.1 240.0,102.2 242.5,83.7 245.0,93.9 247.5,94.1 250.0,93.3 252.5,93.5 255.0,93.6 257.5,93.8 260.0,93.9 262.5,94.1 265.0,94.2 267.5,94.4 270.0,94.5 272.5,94.7 275.0,94.8 277.5,95.0 280.0,95.1 282.5,95.3 285.0,85.9 287.5,86.0 290.0,86.2 292.5,86.3 295.0,86.4 297.5,86.6 300.0,86.7 302.5,86.8 305.0,87.0 307.5,87.1 310.0,69.2 312.5,69.3 315.0,69.4 317.5,69.5 320.0,69.6 322.5,69.7 325.0,69.8 327.5,69.9 330.0,70.0 332.5,70.1 335.0,70.1 337.5,70.2 340.0,70.3 342.5,70.4 345.0,54.2 347.5,54.3 350.0,54.3 352.5,55.1 355.0,55.2 357.5,54.5 360.0,54.5 362.5,54.6 365.0,54.6 367.5,63.5 370.0,63.6 372.5,63.7 375.0,62.9 377.5,63.0 380.0,63.0 382.5,63.1 385.0,63.2 387.5,47.6 390.0,47.6 392.5,47.7 395.0,47.7 397.5,47.7 400.0,47.7 402.5,48.5 405.0,48.5 407.5,48.6 410.0,48.6 412.5,48.6 415.0,48.6 417.5,55.7 420.0,55.7 422.5,55.8 425.0,56.6 427.5,56.7 430.0,56.7 432.5,56.8 435.0,56.8 437.5,65.6 440.0,65.7 442.5,65.7 445.0,65.8 447.5,65.9 450.0,66.0 452.5,65.1 455.0,65.2 457.5,65.2 460.0,65.3 462.5,65.4 465.0,65.5 467.5,66.5 470.0,66.5 472.5,65.7 475.0,65.8 477.5,65.8 480.0,65.9 482.5,48.6 485.0,48.6 487.5,48.6 490.0,48.7 492.5,34.4 495.0,34.4 497.5,35.1 500.0,35.0 502.5,35.0 505.0,35.0 507.5,58.2 510.0,58.3 512.5,58.3 515.0,58.3 517.5,58.4 520.0,58.4 522.5,58.5 525.0,58.5 527.5,58.6 530.0,58.6 532.5,90.4 535.0,90.6 537.5,90.7 540.0,90.9 542.5,89.8 545.0,90.0 547.5,90.1 550.0,90.3 552.5,91.6 555.0,91.8 557.5,91.9 560.0,92.1 562.5,92.2 565.0,91.2 567.5,91.3 570.0,91.5 572.5,91.6 575.0,91.8 577.5,93.2 580.0,93.3 582.5,93.5 585.0,93.7 587.5,93.8 590.0,92.7 592.5,92.9 595.0,93.0 597.5,94.5 600.0,94.6 602.5,94.8 605.0,95.0 607.5,93.8 610.0,94.0 612.5,94.1 615.0,95.6 617.5,95.8 620.0,81.8 622.5,81.9 625.0,82.0 627.5,82.1 630.0,82.2 632.5,82.3 635.0,59.0 637.5,59.1 640.0,59.1 642.5,59.1 645.0,60.2 647.5,60.2 650.0,60.2 652.5,59.2 655.0,59.2 657.5,59.2 660.0,59.2 662.5,59.2 665.0,39.6 667.5,39.6 670.0,39.5 672.5,39.5 675.0,39.4 677.5,39.4 680.0,39.3 682.5,39.2 685.0,39.2 687.5,39.1 690.0,39.0 692.5,39.0 695.0,38.9 697.5,38.8 700.0,30.6 702.5,30.5 705.0,30.4 707.5,30.3 710.0,30.2 712.5,30.8 715.0,30.7 717.5,30.6 720.0,30.5 722.5,30.4 725.0,30.3 727.5,48.8 730.0,48.7 732.5,48.7 735.0,48.6 737.5,48.5 740.0,48.5 742.5,47.3 745.0,47.2 747.5,47.1 750.0,47.0 752.5,47.0 755.0,46.9 757.5,46.8 760.0,46.7 762.5,46.6 765.0,46.5 767.5,46.4 770.0,47.4 772.5,47.3 775.0,47.2 777.5,47.1 780.0,58.4 782.5,58.3 785.0,58.2 787.5,58.2 790.0,58.1 792.5,58.0 795.0,45.0 797.5,44.9 800.0,44.7 802.5,44.6 805.0,44.4 807.5,44.2 810.0,44.1 812.5,43.9 815.0,43.7 817.5,43.5 820.0,43.3 822.5,43.1 825.0,42.9 827.5,22.5 830.0,22.2 832.5,22.0 835.0,21.7 837.5,21.5 840.0,21.2 842.5,20.9 845.0,20.6 847.5,20.4 850.0,20.1 852.5,19.8 855.0,19.5 857.5,19.2 860.0,18.8 862.5,28.4 865.0,28.1 867.5,27.7 870.0,27.4 872.5,27.0 875.0,25.6 877.5,25.2 880.0,24.8 882.5,24.4 885.0,23.9 887.5,23.5 890.0,24.1 892.5,23.6 895.0,23.2 897.5,22.7 900.0,22.2 902.5,21.7 905.0,49.6 907.5,49.1 910.0,48.5 912.5,48.0 915.0,47.4 917.5,46.8 920.0,46.2 922.5,45.5 925.0,44.8 927.5,44.1 930.0,43.3 932.5,42.5 935.0,41.6 937.5,40.7 940.0,63.5 942.5,62.7 945.0,61.8 947.5,60.9 950.0,59.9 952.5,58.8 955.0,57.6 957.5,56.3 960.0,54.9 962.5,53.4 965.0,51.6 967.5,49.8 970.0,47.7 972.5,45.3 975.0,138.4 977.5,139.3 980.0,133.8 982.5,134.4 985.0,142.5 987.5,143.8 990.0,145.4 992.5,234.4 995.0,250.9 997.5,276.8 1000.0,300.0" fill="none" stroke="#F2F2EF" stroke-width="2.2" stroke-linejoin="round" vector-effect="non-scaling-stroke"/></svg>
+<span class="lb lbo">Fenerbahçe win probability · above the line = Fenerbahçe favoured</span><span class="lb rt">94% with 6:55 left → 0%</span></div>
+</div><figcaption>Fenerbahçe's win probability through the game. Logos: FIBA.</figcaption></figure>
+
+<div class="a-layout wrap">
+  <article class="a-body">
+    <div class="glance-m box"><h4>At a glance</h4><div class="glance"><div><b>94%</b><span>Fenerbahçe's win probability with 6:55 left, up 66–59</span></div><div><b>0/8</b><span>Fenerbahçe from three in Istanbul (6/17 in Valencia)</span></div><div><b>11</b><span>free throws missed by Fenerbahçe — in a two-point loss</span></div></div></div>
+<div class="mu">
+  <div class="g"><div class="lbl">Game 1<b>14 Oct · Valencia</b><a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135186-VBC-FENER" target="_blank" rel="noopener">Box score ↗</a></div><div class="t"><img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia logo" loading="lazy">Valencia</div><div class="sc"><span class="l">69</span> – <span class="w">88</span></div><div class="t r">Fenerbahçe<img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe logo" loading="lazy"></div></div>
+  <div class="g"><div class="lbl">Game 2<b>3 Nov · Istanbul</b><a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135192-FENER-VBC" target="_blank" rel="noopener">Box score ↗</a></div><div class="t"><img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe logo" loading="lazy">Fenerbahçe</div><div class="sc"><span class="l">71</span> – <span class="w">73</span></div><div class="t r">Valencia<img src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia logo" loading="lazy"></div></div>
+</div>
+<p>On 14 October, Fenerbahçe went to the Roig Arena and beat Valencia <strong>88–69</strong>. They led by 27–12 after ten minutes and by as many as 26. The lead changed hands once all night.</p>
+<p>On 3 November, in Istanbul, Valencia won <strong>73–71</strong>. The lead changed hands <strong>15 times</strong>, the score was tied <strong>nine times</strong>, and Alexis Peterson decided it from the free-throw line with one second left. It was Valencia's first win over the reigning European champions after ten straight defeats, <a href="https://www.solobasket.com/internacional/valencia-basket-femenino-gana-fenerbahce-estambul-euroliga" target="_blank" rel="noopener">according to Solobasket</a>.</p>
+<p>Same two teams, three weeks apart, and a 21-point swing. I pulled the official play-by-play and box score of both games from FIBA to find out where it came from.</p>
+
+<h2>The game Fenerbahçe had already won</h2>
+<figure class="wide"><a href="fen_val_wp.png" target="_blank" rel="noopener"><img src="fen_val_wp.png" alt="Win probability chart of Fenerbahçe vs Valencia, 3 Nov 2026" loading="lazy"></a><figcaption>Win probability after every score. Model: score margin, time left, possession and a pre-game edge for Fenerbahçe (see Methodology).</figcaption></figure>
+<p>A win probability model turns the score and the clock into a single number: how likely each team is to win from here. Fenerbahçe started as favourites at home, around <strong>78%</strong>, and were above 50% for almost the whole game.</p>
+<p>The peak came with <strong>6:55 left</strong>. Fenerbahçe led <strong>66–59</strong> and the model gave them a <strong>94%</strong> chance. From there, Valencia scored 14 points and Fenerbahçe 5.</p>
+<ul>
+<li><strong>1:03 left — Peterson's driving layup</strong> put Valencia ahead 69–68 and dropped Fenerbahçe to about 54%.</li>
+<li><strong>0:21 left — Leila Lacan made one of two free throws</strong> to tie it at 71. With both, Fenerbahçe would have led by one with Valencia needing a basket, about 55% in the model. With one, it was a tie and Valencia's ball: <strong>24%</strong>. That single miss was worth around 30 points of win probability.</li>
+<li><strong>0:01 left — Peterson drew the foul and made both.</strong> Laura Juskaite's heave from the backcourt missed.</li>
+</ul>
+
+<h2>Where the 21 points went: the Four Factors</h2>
+<p>Dean Oliver's Four Factors split any game into four things: shooting (effective FG%), turnovers, offensive rebounds and free throws. Both games had almost the same pace — about 78 possessions each — so the totals compare cleanly.</p>
+<figure class="wide"><a href="fen_val_factors.png" target="_blank" rel="noopener"><img src="fen_val_factors.png" alt="Four Factors of Fenerbahçe and Valencia in both games" loading="lazy"></a><figcaption>Per 100 possessions. Game 1: Valencia 69–88 (14 Oct, Valencia). Game 2: Fenerbahçe 71–73 (3 Nov, Istanbul).</figcaption></figure>
+<table>
+<thead><tr><th></th><th>FENER G1</th><th>FENER G2</th><th>VBC G1</th><th>VBC G2</th></tr></thead>
+<tbody>
+<tr><td>Points per 100 possessions</td><td>112.1</td><td>90.7</td><td>89.0</td><td>92.8</td></tr>
+<tr><td>Effective FG%</td><td>62.1%</td><td>44.3%</td><td>41.7%</td><td>51.8%</td></tr>
+<tr><td>Turnovers per 100 poss.</td><td>26.8</td><td>20.4</td><td>21.9</td><td>31.8</td></tr>
+<tr><td>Offensive rebound %</td><td>30.8%</td><td>28.2%</td><td>27.0%</td><td>34.4%</td></tr>
+<tr><td>Free throws</td><td>16/17</td><td>17/28</td><td>19/24</td><td>16/22</td></tr>
+<tr><td>Three-pointers</td><td>6/17</td><td>0/8</td><td>6/26</td><td>7/19</td></tr>
+</tbody></table>
+<p>The headline is on the left side of the table. In Valencia, Fenerbahçe were +23 per 100 possessions. In Istanbul they were −2. That is a 25-point swing, and <strong>21 of those 25 points came from Fenerbahçe's offense</strong> dropping from 112 to 91. Valencia's own attack only improved from 89 to 93.</p>
+<ul>
+<li><strong>Zero threes.</strong> Fenerbahçe went 0 for 8 from beyond the arc after 6 of 17 in Valencia. They also took half as many.</li>
+<li><strong>The paint got harder.</strong> They still scored 48 points in the paint, but their two-point percentage fell from 66% (27/41) to 51% (27/53).</li>
+<li><strong>Free throws.</strong> 16 of 17 in Valencia, 17 of 28 in Istanbul — 11 misses in a game they lost by two. Even at an ordinary 75% they would have scored four more points.</li>
+</ul>
+<p>And Valencia won while turning the ball over <strong>25 times</strong> — almost one in three possessions, much worse than in the first game. They survived it with better shooting (eFG 41.7% → 51.8%, threes 6/26 → 7/19) and more second chances: an offensive rebound rate of 34% and 13 second-chance points.</p>
+
+<h2>A different Valencia</h2>
+<p>Part of the answer is simply who played. Four of the eleven Valencia players used in Istanbul did not play in the first game: <strong>Raquel Carrera, Chloe Bibby, Elena Buenavida and Isabel Hernandez</strong>. Carrera had 11 rebounds and went 7 of 10 from the line; Bibby made the free throws that gave Valencia a 71–70 lead with 37 seconds left. On the other side, Olcay Çakır Turgut, who scored 14 points off the bench in Valencia, did not play in Istanbul.</p>
+<p>The other part is <strong>Alexis Peterson</strong>: 7 points on 1 of 7 shooting in game one, 21 points on 8 of 10 in game two, including the go-ahead layup and the winning free throws.</p>
+
+<h2>The players who decided it</h2>
+<p>Game 2 lines from the official box score.</p>
+<div class="players"><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_239761--competition_209127" alt="Alexis Peterson" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia" loading="lazy"></div><div class="tx"><b>Alexis Peterson</b><span class="ln">21 pts · 8/10 FG</span><span class="d">7 points on 1/7 in game 1. Go-ahead layup at 1:03 and the winning free throws at 0:01.</span></div></div><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_225137--competition_209127" alt="Raquel Carrera" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia" loading="lazy"></div><div class="tx"><b>Raquel Carrera</b><span class="ln">9 pts · 11 reb · 7/10 FT</span><span class="d">Did not play in game 1. Most rebounds on the floor in Istanbul.</span></div></div><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_205418--competition_209127" alt="Chloe Bibby" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65548.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65548--competition_209127" alt="Valencia" loading="lazy"></div><div class="tx"><b>Chloe Bibby</b><span class="ln">8 pts · 3 reb · 2 ast</span><span class="d">Drew the three-shot foul at 0:37 and made two for a 71–70 lead.</span></div></div><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_268462--competition_209127" alt="Lauren Betts" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe" loading="lazy"></div><div class="tx"><b>Lauren Betts</b><span class="ln">16 pts · 6 reb · 8/11 FG</span><span class="d">Fenerbahçe's best scorer in Istanbul, after 6 points in game 1.</span></div></div><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_167505--competition_209127" alt="Emma Meesseman" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe" loading="lazy"></div><div class="tx"><b>Emma Meesseman</b><span class="ln">9 pts · 4 ast · 4 stl · 3 blk</span><span class="d">One of the two passing hubs, with Allemand. +18 in game 1, 0 in game 2.</span></div></div><div class="pc"><div class="ph"><img class="hs" src="https://assets.fiba.basketball/image/upload/w_2800/c_pad,ar_12:10/c_pad,ar_10:12/ar_10:12,c_crop,g_face,z_0.25/e_trim/c_lpad,ar_1:1/w_2800/w_2200,h_2000,c_crop,x_300/w_400,h_400,c_fill,g_north/q_auto/f_auto/.headshot--person_271135--competition_209127" alt="Leila Lacan" loading="lazy"><img class="lg" src="https://assets.fiba.basketball/image/upload/d_.logoflag--dark--organisation_65448.webp/w_200/f_auto/q_auto/.logoflag--dark--organisation_65448--competition_209127" alt="Fenerbahçe" loading="lazy"></div><div class="tx"><b>Leila Lacan</b><span class="ln">12 pts · 5/11 FG · 2/4 FT</span><span class="d">19 points in game 1. Made one of two free throws, down 71–70, with 21 seconds left.</span></div></div></div>
+<p class="credit">Photos and logos: <a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135192-FENER-VBC" target="_blank" rel="noopener">FIBA</a>.</p>
+
+<h2>Who passed to whom</h2>
+<figure class="wide"><a href="fen_val_assists.png" target="_blank" rel="noopener"><img src="fen_val_assists.png" alt="Assist networks of Fenerbahçe and Valencia in game 2" loading="lazy"></a><figcaption>Every assist in the play-by-play is linked to the basket it created. Arrow = passer → scorer.</figcaption></figure>
+<p>The play-by-play links every assist to the basket it created, so we can draw each team as a passing network. Both teams had <strong>17 assists from nine different passers</strong> in Istanbul, but the shape is different:</p>
+<ul>
+<li><strong>Fenerbahçe ran through two hubs.</strong> Emma Meesseman and Julie Allemand made 8 of the 17 assists. Lauren Betts (16 points) was the main finisher, with four assisted baskets.</li>
+<li><strong>Valencia had no hub at all.</strong> Nobody had more than three assists — Elena Buenavida and Helena Pueyo — and the passes went in every direction, including from Peterson, Carrera and Bibby.</li>
+</ul>
+
+<h2>The last seven minutes</h2>
+<figure class="wide"><a href="fen_val_finish.png" target="_blank" rel="noopener"><img src="fen_val_finish.png" alt="Score in the last seven minutes of Fenerbahçe vs Valencia" loading="lazy"></a><figcaption>Score progression from 7:00 left in the fourth quarter. Valencia outscored Fenerbahçe 16–9 in the quarter.</figcaption></figure>
+<p>The fourth quarter was 16–9 for Valencia, and the end of it was close to a shutdown. From their timeout at 66–59 with 5:59 left, Fenerbahçe made <strong>one field goal in nine attempts</strong> (counting the final heave) and turned it over three times. Their last five points all came from the free-throw line or a putback.</p>
+
+<h2>What this doesn't tell us</h2>
+<ul>
+<li><strong>Two games are two games.</strong> Missed free throws and cold shooting swing a lot from night to night. This is a description of what happened, not a prediction for the next meeting.</li>
+<li><strong>The win probability model is simple.</strong> It only knows the score, the time left and who has the ball after each score, plus a pre-game edge. It does not know who is on the floor, fouls or timeouts. Treat the percentages as a guide.</li>
+<li><strong>Roster changes.</strong> I don't know why players missed either game. The point is only that the two Valencias were not the same team.</li>
+</ul>
+
+<h2>Methodology</h2>
+<ul>
+<li><strong>Data:</strong> official play-by-play and box score of both games from FIBA (EuroLeague Women 2026-27, Group C: <a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135186-VBC-FENER" target="_blank" rel="noopener">game 135186</a>, Valencia–Fenerbahçe, 14 Oct; <a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135192-FENER-VBC" target="_blank" rel="noopener">game 135192</a>, Fenerbahçe–Valencia, 3 Nov).</li>
+<li><strong>Possessions</strong> = FGA − offensive rebounds + turnovers + 0.44 × FTA. Points per 100 possessions = 100 × points ÷ possessions.</li>
+<li><strong>Four Factors:</strong> eFG% = (FGM + 0.5 × 3PM) ÷ FGA; turnovers per 100 possessions; ORB% = offensive rebounds ÷ (own offensive + opponent defensive rebounds); free throws made and attempted.</li>
+<li><strong>Win probability:</strong> a Brownian-motion model in the style of Hal Stern (1994). Fenerbahçe's chance = Φ((margin + μ·τ + possession) ÷ (σ·√τ)), where τ is the share of the game left, μ = +10 points (pre-game edge for the home team that won by 19 three weeks earlier), σ = 13 points, and the team with the ball gets +0.95 points. With no pre-game edge (μ = 0), the peak would be 89% instead of 94% and the story is the same.</li>
+<li><strong>Assist network:</strong> every "made the assist" event is linked to the made shot it follows in the play-by-play.</li>
+</ul>
+<p>Next up: the rest of Group C. Valencia (2–2) visit Flammes Carolo on 25 November, with two rounds left to fight for a place in the Second Round.</p>
+
+  </article>
+  <aside class="a-side"><div class="stick">
+    <div class="box"><h4>At a glance</h4><div class="glance"><div><b>94%</b><span>Fenerbahçe's win probability with 6:55 left, up 66–59</span></div><div><b>0/8</b><span>Fenerbahçe from three in Istanbul (6/17 in Valencia)</span></div><div><b>11</b><span>free throws missed by Fenerbahçe — in a two-point loss</span></div></div></div>
+    <div class="box"><h4>In this article</h4><nav class="toc" id="toc"></nav></div>
+    <div class="box"><h4>Official stats</h4><p style="font-size:14px;color:#d7d7d3;margin-bottom:10px">Box scores and play-by-play on FIBA.</p><p style="font:600 13px var(--mono);display:flex;flex-direction:column;gap:6px"><a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135186-VBC-FENER" target="_blank" rel="noopener" style="color:var(--rasp)">Game 1 · VBC 69–88 FENER ↗</a><a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135192-FENER-VBC" target="_blank" rel="noopener" style="color:var(--rasp)">Game 2 · FENER 71–73 VBC ↗</a></p></div>
+    <div class="box toolbox"><h4>More from the lab</h4><p>Every shot of the 2026 WNBA Finals, with its possession.</p><a class="btn sm" href="shot-lab.html">Read the Shot Lab →</a></div>
+  </div></aside>
+</div>
+
+<section class="a-end wrap">
+  <div class="authorcard"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><p>Founder of The W Lab and Sports Analytics master's student in Madrid. Women's basketball, decoded by the numbers.</p></div><a class="btn" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Follow @the.w.lab</a></div>
+  <div class="more"><span class="kicker">Keep reading</span><h3>More from The W Lab</h3><div class="grid" id="more"></div></div>
+</section>
+
+<div id="wl-footer"></div>
+<script src="site.js"></script>
+</body></html>

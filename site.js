@@ -8,6 +8,8 @@
    ===================================================================== */
 window.WLAB = {
   TICKER: [
+    "<b>EuroLeague Women</b> · Fenerbahçe 71–73 Valencia · Peterson <em>21</em> pts, winning FTs at 0:01",
+    "<b>Valencia</b> win in Istanbul three weeks after losing <em>69–88</em> at home",
     "<b>Golden State Valkyries</b> · 2026 WNBA champions · <em>4–3</em>",
     "<b>Game 7</b> · Valkyries 68–63 Dream · pace <em>71.5</em>",
     "Pace decided all <em>7</em> games: Golden State <em>4–0</em> below 76, Atlanta <em>3–0</em> above",
@@ -23,6 +25,9 @@ window.WLAB = {
     champion: { team:"Golden State Valkyries", line:"Won 4–3 · Game 7 at Chase Center, 31 Oct" }
   },
   ARTICLES: [
+    { slug:"fenerbahce-valencia", href:"fenerbahce-valencia.html", img:"fen_val_thumb.png", tags:["EuroLeague","Europe"], date:"5 Nov 2026",
+      title:"From −19 to +2: How Valencia Finally Beat the European Champions",
+      dek:"Win probability, Four Factors and the assist network of Fenerbahçe vs Valencia." },
     { slug:"shot-lab", href:"shot-lab.html", img:"shot_lab_thumb.png", tags:["WNBA","Tool"], date:"1 Nov 2026",
       title:"We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions",
       dek:"Every shot of Dream vs Valkyries, tied to its possession and to who was on the floor." },
