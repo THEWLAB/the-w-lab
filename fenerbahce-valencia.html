@@ -12,6 +12,21 @@
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
 <link rel="stylesheet" href="site.css">
 <style>
+.pos{margin:22px 0 8px;background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:16px 18px}
+.pos .row{margin-bottom:14px}.pos .row:last-of-type{margin-bottom:6px}
+.pos .hd{display:flex;flex-wrap:wrap;align-items:baseline;gap:6px 12px;margin-bottom:8px}
+.pos .hd b{font-size:16px}.pos .hd i{width:11px;height:11px;border-radius:3px;display:inline-block}
+.pos .hd span{font:12.5px var(--mono);color:var(--muted)}
+.pos .cells{display:grid;grid-template-columns:repeat(13,minmax(0,1fr));gap:5px}
+.pos .c{border:1.5px solid #3a3a40;background:#1C1C22;border-radius:7px;padding:5px 4px 6px;min-height:62px;display:flex;flex-direction:column;justify-content:space-between;min-width:0}
+.pos .c .t{font:10.5px var(--mono);color:#6b6b72}
+.pos .c .v{font:800 15px var(--sans);color:#6b6b72;line-height:1.1}
+.pos .c.to{border-color:#FF6B7D;background:rgba(255,107,125,.1)}.pos .c.to .v,.pos .c.to .t{color:#FF6B7D}
+.pos .c.s .v,.pos .c.s .t{color:#0E0E10}
+.pos .c[title]{cursor:help}
+.pos .lg{font:12px var(--mono);color:var(--muted);display:flex;flex-wrap:wrap;gap:6px 18px;margin-top:6px}
+@media (max-width:640px){.pos .cells{grid-template-columns:repeat(7,minmax(0,1fr))}.pos .c .v{font-size:12.5px}}
+
 
 
 .mu{display:grid;gap:10px;margin:8px 0 26px}
@@ -157,16 +172,29 @@
 <p class="credit">Photos and logos: <a href="https://www.fiba.basketball/en/events/euroleague-women-26-27/games/135192-FENER-VBC" target="_blank" rel="noopener">FIBA</a>.</p>
 
 <h2>Who passed to whom</h2>
-<figure class="wide"><a href="fen_val_assists.png" target="_blank" rel="noopener"><img src="fen_val_assists.png" alt="Assist networks of Fenerbahçe and Valencia in game 2" loading="lazy"></a><figcaption>Every assist in the play-by-play is linked to the basket it created. Arrow = passer → scorer.</figcaption></figure>
-<p>The play-by-play links every assist to the basket it created, so we can draw each team as a passing network. Both teams had <strong>17 assists from nine different passers</strong> in Istanbul, but the shape is different:</p>
-<ul>
-<li><strong>Fenerbahçe ran through two hubs.</strong> Emma Meesseman and Julie Allemand made 8 of the 17 assists. Lauren Betts (16 points) was the main finisher, with four assisted baskets.</li>
-<li><strong>Valencia had no hub at all.</strong> Nobody had more than three assists — Elena Buenavida and Helena Pueyo — and the passes went in every direction, including from Peterson, Carrera and Bibby.</li>
-</ul>
+<p>The FIBA play-by-play links every assist to the basket it created. That lets us draw each team as a passing network and, more usefully, compare the same network across the two games.</p>
+<figure class="wide"><a href="fen_val_assists.png" target="_blank" rel="noopener"><img src="fen_val_assists.png" alt="Assist networks of Fenerbahçe and Valencia in game 2" loading="lazy"></a><figcaption>Game 2. Arrow = passer → scorer, thicker = more. FIBA also credits assists on free throws when a pass leads directly to a shooting foul; those are included here.</figcaption></figure>
+<h3>Fenerbahçe: same hubs, no threes</h3>
+<p>Fenerbahçe's ball movement barely changed. Emma Meesseman and Julie Allemand were the hubs in both games: 10 of the 21 assists in Valencia, 8 of the 17 in Istanbul. More than half of their field goals came off a pass both nights (61% and 56%).</p>
+<p>What changed is where those passes ended. In Valencia, <strong>all six of their threes were assisted</strong>, three of them by Meesseman. In Istanbul, Fenerbahçe made no threes at all, so every assist was a two-pointer. Lauren Betts finished the most of them (four), close to the basket. Points from assisted baskets fell from <strong>46 to 30</strong>.</p>
+<figure class="wide"><a href="fen_val_assist_cmp.png" target="_blank" rel="noopener"><img src="fen_val_assist_cmp.png" alt="Points from assisted baskets for both teams in both games" loading="lazy"></a><figcaption>Points from field goals that came off an assist. Free throws not included.</figcaption></figure>
+<p>Valencia took the threes away, not the passing. Fenerbahçe attempted only eight threes in Istanbul, after 17 in Valencia.</p>
+<h3>Valencia: new passers, same output</h3>
+<p>Valencia scored almost exactly the same from assisted baskets in both games (28 and 29 points). The passers were different. In Valencia, Leticia Romero led the team with four assists on field goals; she did not play in Istanbul. There, <strong>8 of Valencia's 12 assisted baskets were set up by players who had not played in game one</strong>: Elena Buenavida (3), Chloe Bibby (2), Isabel Hernandez (2) and Raquel Carrera (1).</p>
+<p>Nobody on Valencia had more than three assists, and five of their seven threes came off a pass, including the Balogun three that started the comeback (from Bibby) and Araujo's two (from Hernandez and Peterson).</p>
 
 <h2>The last seven minutes</h2>
-<figure class="wide"><a href="fen_val_finish.png" target="_blank" rel="noopener"><img src="fen_val_finish.png" alt="Score in the last seven minutes of Fenerbahçe vs Valencia" loading="lazy"></a><figcaption>Score progression from 7:00 left in the fourth quarter. Valencia outscored Fenerbahçe 16–9 in the quarter.</figcaption></figure>
-<p>The fourth quarter was 16–9 for Valencia, and the end of it was close to a shutdown. From their timeout at 66–59 with 5:59 left, Fenerbahçe made <strong>one field goal in nine attempts</strong> (counting the final heave) and turned it over three times. Their last five points all came from the free-throw line or a putback.</p>
+<figure class="wide"><a href="fen_val_finish.png" target="_blank" rel="noopener"><img src="fen_val_finish.png" alt="Score in the last seven minutes of Fenerbahçe vs Valencia" loading="lazy"></a><figcaption>Score progression from 7:00 left in the fourth quarter. Valencia won the quarter 16–9.</figcaption></figure>
+<p>Fenerbahçe scored at 6:55 to lead 66–59 and called timeout at 5:59. From that timeout to the buzzer, I went through every possession in the play-by-play.</p>
+<div class="pos" aria-label="Every possession of the last six minutes"><div class="row"><div class="hd"><i style="background:#F5C400"></i><b>Fenerbahçe</b><span>13 possessions · 5 points · 0.38 per possession</span></div><div class="cells"><div class="c to" title="5:57 · Betts bad pass"><span class="t">5:57</span><span class="v">TO</span></div><div class="c s" style="background:#F5C400;border-color:#F5C400" title="5:05 · Betts putback"><span class="t">5:05</span><span class="v">+2</span></div><div class="c" title="4:33 · Allemand layup missed"><span class="t">4:33</span><span class="v">miss</span></div><div class="c to" title="4:06 · Angloma out of bounds"><span class="t">4:06</span><span class="v">TO</span></div><div class="c" title="3:28 · Lacan blocked by Balogun"><span class="t">3:28</span><span class="v">miss</span></div><div class="c" title="3:18 · Betts layup missed"><span class="t">3:18</span><span class="v">miss</span></div><div class="c to" title="2:43 · Anderson bad pass"><span class="t">2:43</span><span class="v">TO</span></div><div class="c" title="2:04 · Anderson step-back missed"><span class="t">2:04</span><span class="v">miss</span></div><div class="c" title="1:33 · Betts layup missed"><span class="t">1:33</span><span class="v">miss</span></div><div class="c" title="1:19 · Anderson three missed"><span class="t">1:19</span><span class="v">miss</span></div><div class="c s" style="background:#F5C400;border-color:#F5C400" title="0:53 · Juskaite 2/2 FT"><span class="t">0:53</span><span class="v">+2</span></div><div class="c s" style="background:#F5C400;border-color:#F5C400" title="0:21 · Lacan 1/2 FT"><span class="t">0:21</span><span class="v">+1</span></div><div class="c" title="0:00 · Juskaite heave missed"><span class="t">0:00</span><span class="v">miss</span></div></div></div><div class="row"><div class="hd"><i style="background:#F2801F"></i><b>Valencia</b><span>12 possessions · 14 points · 1.17 per possession</span></div><div class="cells"><div class="c s" style="background:#F2801F;border-color:#F2801F" title="5:32 · Balogun three (ast Bibby)"><span class="t">5:32</span><span class="v">+3</span></div><div class="c to" title="4:45 · Takács-Kiss bad pass"><span class="t">4:45</span><span class="v">TO</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="4:25 · Pueyo driving layup"><span class="t">4:25</span><span class="v">+2</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="3:53 · Bibby jumper (ast Araujo)"><span class="t">3:53</span><span class="v">+2</span></div><div class="c to" title="3:24 · Balogun lost ball"><span class="t">3:24</span><span class="v">TO</span></div><div class="c" title="2:53 · Carrera blocked by Meesseman"><span class="t">2:53</span><span class="v">miss</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="2:25 · Carrera 1/2 FT"><span class="t">2:25</span><span class="v">+1</span></div><div class="c" title="1:53 · Peterson layup missed"><span class="t">1:53</span><span class="v">miss</span></div><div class="c to" title="1:25 · Carrera bad pass"><span class="t">1:25</span><span class="v">TO</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="1:03 · Peterson driving layup"><span class="t">1:03</span><span class="v">+2</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="0:37 · Bibby 2/3 FT"><span class="t">0:37</span><span class="v">+2</span></div><div class="c s" style="background:#F2801F;border-color:#F2801F" title="0:01 · Peterson 2/2 FT"><span class="t">0:01</span><span class="v">+2</span></div></div></div><div class="lg"><span>coloured = scored</span><span style="color:#FF6B7D">TO = turnover</span><span>miss = missed shot, defensive rebound lost</span><span>on a computer, hover a box to see the play</span></div></div><p class="credit" style="margin-top:4px">Each box is one possession, in order, from Fenerbahçe's timeout at 5:59. A possession ends on a made basket or final free throw, a defensive rebound or a turnover.</p>
+<ul>
+<li><strong>13 possessions, 5 points.</strong> Fenerbahçe scored 0.38 points per possession, against 1.17 for Valencia (12 possessions, 14 points). Over the whole game both teams were around 0.9.</li>
+<li><strong>One field goal in nine attempts.</strong> The only basket was a Lauren Betts putback at 5:05. The other eight shots missed, including three layups (Allemand at 4:33, Betts at 3:18 and 1:33) and a Lacan jumper blocked by Elizabeth Balogun.</li>
+<li><strong>Three turnovers each, very different results.</strong> Both teams gave the ball away three times. Valencia scored 6 points off Fenerbahçe's (Balogun's three, Bibby's jumper, a Carrera free throw). Fenerbahçe scored 0 off Valencia's: two of them led to missed layups, the third to a missed Anderson three.</li>
+<li><strong>Timeouts didn't help.</strong> Fenerbahçe called three in the last six minutes. The first possession after the 5:59 timeout was a Betts turnover; after the 3:50 timeout, Lacan was blocked. Only the last one, at 1:02, produced points: Laura Juskaite's two free throws for a 70–69 lead.</li>
+<li><strong>Valencia lived at the rim and the line.</strong> Their last 14 points: one three, three layups or short jumpers, and five of seven free throws. Raquel Carrera, Chloe Bibby and Alexis Peterson all got to the line in the last two and a half minutes.</li>
+</ul>
+<p>Emma Meesseman, Fenerbahçe's main passer, didn't take a shot in that stretch. The last shots went to Betts (three), Anderson (two), Lacan (two), Allemand and Juskaite.</p>
 
 <h2>What this doesn't tell us</h2>
 <ul>

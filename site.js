@@ -25,21 +25,26 @@ window.WLAB = {
     champion: { team:"Golden State Valkyries", line:"Won 4–3 · Game 7 at Chase Center, 31 Oct" }
   },
   ARTICLES: [
-    { slug:"fenerbahce-valencia", href:"fenerbahce-valencia.html", img:"fen_val_thumb.png", tags:["EuroLeague","Europe"], date:"5 Nov 2026",
+    { slug:"fenerbahce-valencia", comp:"elw", short:"Fenerbahçe vs Valencia: from −19 to +2", href:"fenerbahce-valencia.html", img:"fen_val_thumb.png", tags:["EuroLeague","Europe"], date:"5 Nov 2026",
       title:"From −19 to +2: How Valencia Finally Beat the European Champions",
       dek:"Win probability, Four Factors and the assist network of Fenerbahçe vs Valencia." },
-    { slug:"shot-lab", href:"shot-lab.html", img:"shot_lab_thumb.png", tags:["WNBA","Tool"], date:"1 Nov 2026",
+    { slug:"shot-lab", comp:"wnba", href:"shot-lab.html", img:"shot_lab_thumb.png", tags:["WNBA","Tool"], date:"1 Nov 2026",
       title:"We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions",
       dek:"Every shot of Dream vs Valkyries, tied to its possession and to who was on the floor." },
-    { slug:"finals-pace", href:"finals-pace.html", img:"finals_pace_thumb.png", tags:["WNBA","Tool"], date:"26 Oct 2026",
+    { slug:"finals-pace", comp:"wnba", href:"finals-pace.html", img:"finals_pace_thumb.png", tags:["WNBA","Tool"], date:"26 Oct 2026",
       title:"We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series",
       dek:"1,045 possessions, seven games, one number that decided them all." },
-    { slug:"talent-pipeline", href:"talent-pipeline.html", img:"U20W_pipeline_04.png", tags:["Europe","FIBA"], date:"3 Jul 2026",
+    { slug:"talent-pipeline", comp:"u20", href:"talent-pipeline.html", img:"U20W_pipeline_04.png", tags:["Europe","FIBA"], date:"3 Jul 2026",
       title:"Produced, Not Promised: What 25 Years of U20 Medals Say About Senior Success",
       dek:"Does dominating Europe's youth game predict anything at senior level?" },
-    { slug:"scoring-a-lot", href:"scoring-a-lot.html", img:"ts-vs-points.png", tags:["WNBA","Shooting"], date:"29 Jun 2026",
+    { slug:"scoring-a-lot", comp:"wnba", href:"scoring-a-lot.html", img:"ts-vs-points.png", tags:["WNBA","Shooting"], date:"29 Jun 2026",
       title:"Scoring a Lot Isn't Scoring Well",
       dek:"What True Shooting % reveals about the WNBA's top 10 scorers in 2026." }
+  ],
+  COMPETITIONS: [
+    { id:"wnba", name:"WNBA", sub:"2026 season · Finals", tools:true },
+    { id:"elw",  name:"EuroLeague Women", sub:"2026-27 season" },
+    { id:"u20",  name:"U20 Women's EuroBasket", sub:"FIBA Europe youth" }
   ],
   TOOL_URL:"https://tomascosta7.github.io/wnba-finals-possession-lab/",
   GITHUB_URL:"https://github.com/tomascosta7/wnba-finals-possession-lab",
@@ -56,7 +61,7 @@ window.WLAB = {
   // ticker
   const t=$('#wl-ticker');
   if(t){const items=W.TICKER.map(x=>`<span class="item">${x}</span>`).join('');
-    t.outerHTML=`<div class="ticker" aria-label="Latest"><div class="live"><i></i>WNBA Finals</div><div class="track"><div class="belt">${items}${items}</div></div></div>`;}
+    t.outerHTML=`<div class="ticker" aria-label="Latest"><div class="live"><i></i>Latest</div><div class="track"><div class="belt">${items}${items}</div></div></div>`;}
 
   // header
   const h=$('#wl-header');
@@ -66,6 +71,10 @@ window.WLAB = {
     <nav class="menu" id="menu">
       <a href="${isHome?'#top':'index.html'}" class="${isHome?'on':''}">Home</a>
       <a href="${home}#analysis" class="${isHome?'':'on'}">Analysis</a>
+      <div class="dd" id="dd"><button class="dd-t" id="ddt" type="button" aria-expanded="false" aria-controls="ddp">Competitions<svg width="10" height="10" viewBox="0 0 10 10" aria-hidden="true"><path d="M1.5 3.5 5 7l3.5-3.5" fill="none" stroke="currentColor" stroke-width="1.6"/></svg></button>
+        <div class="dd-p" id="ddp">${W.COMPETITIONS.map(c=>{const arts=W.ARTICLES.filter(a=>a.comp===c.id);
+          const tools=c.tools?`<a class="tl" href="${W.TOOL_URL}" target="_blank" rel="noopener">Possession Lab ↗</a><a class="tl" href="${W.SHOT_URL}" target="_blank" rel="noopener">Shot Lab ↗</a>`:'';
+          return `<div class="dd-c"><div class="dd-h"><b>${c.name}</b><span>${c.sub} · ${arts.length} ${arts.length==1?'analysis':'analyses'}</span></div>${arts.map(a=>`<a href="${a.href}">${a.short||a.title.split(':')[0].split(' — ')[0]}</a>`).join('')}${tools}</div>`}).join('')}</div></div>
       <a href="${home}#tools">Tools</a>
       <a href="${home}#numbers">Numbers</a>
       <a href="${home}#about">About</a>
@@ -73,7 +82,11 @@ window.WLAB = {
     </nav></div></div></header>`;
     const bg=$('#burger'),mn=$('#menu');
     bg.addEventListener('click',()=>{const o=mn.classList.toggle('open');bg.setAttribute('aria-expanded',o);});
-    mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));}
+    mn.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>mn.classList.remove('open')));
+    const dd=$('#dd'),ddt=$('#ddt');
+    ddt.addEventListener('click',e=>{e.stopPropagation();const o=dd.classList.toggle('open');ddt.setAttribute('aria-expanded',o);});
+    document.addEventListener('click',e=>{if(!dd.contains(e.target)){dd.classList.remove('open');ddt.setAttribute('aria-expanded','false');}});
+    dd.addEventListener('keydown',e=>{if(e.key==='Escape'){dd.classList.remove('open');ddt.setAttribute('aria-expanded','false');ddt.focus();}});}
 
   // footer
   const f=$('#wl-footer');
