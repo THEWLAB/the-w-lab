@@ -3,7 +3,8 @@
 
    ✏️  EDIT HERE — everything you update regularly lives in this block:
        TICKER   the news strip at the top of every page
-       SERIES   the WNBA Finals tracker on the homepage
+       GROUP    the EuroLeague Women group table on the homepage
+       SERIES   the WNBA Finals tracker (recap section)
        ARTICLES the list used for "Keep reading" and the footer
    ===================================================================== */
 window.WLAB = {
@@ -19,6 +20,17 @@ window.WLAB = {
     "<b>Kelsey Plum</b> · <em>65.2%</em> True Shooting, best among the top 10 scorers",
     "<b>Spain</b> · <em>10</em> U20 Women's EuroBasket titles in 22 editions"
   ],
+  GROUP: {
+    after: "After round 4 of 6",
+    cut: 3,
+    table: [
+      { team:"Fenerbahçe", w:3, l:1 },
+      { team:"Flammes Carolo", w:3, l:1 },
+      { team:"Valencia Basket", w:2, l:2, hl:true },
+      { team:"Rapid Bucuresti", w:0, l:4 }
+    ],
+    next: { label:"Flammes Carolo vs Valencia", when:"Round 5 · Wed 25 Nov" }
+  },
   SERIES: {
     results: ["GSV 68–64","ATL 79–65","ATL 97–71","GSV 67–62","GSV 64–55","ATL 80–69","GSV 68–63"],
     next: null, // series over
