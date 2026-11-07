@@ -148,6 +148,7 @@ window.WLAB = {
       +`<a class="card" href="${W.TOOL_URL}" target="_blank" rel="noopener">
       <div class="th"><img src="finals_pace_tool.png" alt=""></div>
       <div class="bd"><div class="tags"><span>Tool</span><span>Live</span></div><h3>WNBA Finals Possession Lab</h3><p>Every possession of the Finals, rebuilt event by event. Open it and explore.</p><span class="meta">Interactive tool</span></div></a>`;}
+      })();
       // GoatCounter
    var gc = document.createElement('script');
    gc.async = true;
