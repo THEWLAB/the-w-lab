@@ -38,7 +38,7 @@ window.WLAB = {
     champion: { team:"Golden State Valkyries", line:"Won 4–3 · Game 7 at Chase Center, 31 Oct" }
   },
   ARTICLES: [
-    { slug:"any-league-archetypes", comp:"elw", href:"any-league-archetypes.html", img:"al_thumb.png", tags:["Liga Femenina","Research"], date:"12 Nov 2026",
+    { slug:"any-league-archetypes", comp:"lf", short:"The eight ways to play", href:"any-league-archetypes.html", img:"al_thumb.png", tags:["Liga Femenina","Research"], date:"12 Nov 2026",
       title:"Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina",
       dek:"We tested a men's player-archetype model on every game of the Liga Femenina." },
     { slug:"fenerbahce-valencia", comp:"elw", short:"Fenerbahçe vs Valencia: from −19 to +2", href:"fenerbahce-valencia.html", img:"fen_val_thumb.png", tags:["EuroLeague","Europe"], date:"5 Nov 2026",
@@ -60,6 +60,7 @@ window.WLAB = {
   COMPETITIONS: [
     { id:"wnba", name:"WNBA", sub:"2026 season · Finals", tools:true },
     { id:"elw",  name:"EuroLeague Women", sub:"2026-27 season" },
+    { id:"lf",   name:"Liga Femenina Endesa", sub:"Spain · 2025-26 and 2026-27" },
     { id:"u20",  name:"U20 Women's EuroBasket", sub:"FIBA Europe youth" }
   ],
   TOOL_URL:"https://tomascosta7.github.io/wnba-finals-possession-lab/",

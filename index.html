@@ -32,6 +32,7 @@ img{max-width:100%;display:block}
 
 /* ---------- hero ---------- */
 .hero{padding:44px 0 30px;display:grid;grid-template-columns:minmax(0,1.25fr) minmax(0,1fr);gap:28px;align-items:stretch}
+.hero.hero-sec{padding:0}
 .feature{position:relative;border-radius:18px;overflow:hidden;border:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column}
 .feature .img{position:relative;aspect-ratio:16/10;overflow:hidden;background:#000}
 .feature .img img{width:100%;height:100%;object-fit:cover;object-position:center top;transition:transform .6s}
@@ -219,8 +220,42 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
 
 <main class="wrap" id="top">
 
-  <!-- ===== HERO ===== -->
+  <!-- ===== HERO (latest story) ===== -->
   <div class="hero">
+    <a class="feature" href="any-league-archetypes.html">
+      <div class="img"><img src="al_radars.png" alt="The eight player archetypes of the Liga Femenina as percentile radars"></div>
+      <div class="txt">
+        <div class="badge"><span>New</span><span class="ghost">Liga Femenina</span><span class="ghost">Research</span></div>
+        <h1>Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina</h1>
+        <p>A model built for men's basketball promised player archetypes for any league. We tested it on every game of the 2025/26 Liga Femenina Endesa: eight archetypes, 142 players, and a map of roles that doesn't travel.</p>
+        <div class="ctas"><span class="btn">Read the study →</span></div>
+        <span class="meta">Tomás Costa · 12 Nov 2026 · 8 min read</span>
+      </div>
+    </a>
+
+    <div class="side">
+      <div class="stat">
+        <span class="kicker">Stat of the study</span>
+        <div class="n">59%</div>
+        <p>of Liga Femenina players have <b>no archetype above half of their game</b>. Positions are labels; most players are a mix of styles.</p>
+        <a href="any-league-archetypes.html">The eight archetypes →</a>
+      </div>
+      <div class="stat">
+        <span class="kicker">The champion's blueprint</span>
+        <div class="n">21%</div>
+        <p>of Valencia's rotation is <b>Rim Protector</b>, more than twice the league average (9%), with almost no classic point guard.</p>
+        <a href="Any_League_Costa_2026.pdf" target="_blank" rel="noopener">Read the paper (PDF) →</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- ===== EUROLEAGUE WOMEN ===== -->
+  <section class="block" id="euroleague">
+    <div class="sec-head">
+      <div><span class="kicker">EuroLeague Women · Group C</span><h2>Valencia's European campaign</h2></div>
+      <p>The last game, the group table and the numbers that decided it.</p>
+    </div>
+  <div class="hero hero-sec">
     <a class="feature" href="fenerbahce-valencia.html">
       <div class="img fvimg">
         <div class="fv" role="img" aria-label="Fenerbahçe 71–73 Valencia, EuroLeague Women, 3 November 2026, with Fenerbahçe's win probability through the game">
@@ -236,7 +271,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
 </div>
       </div>
       <div class="txt">
-        <div class="badge"><span>New</span><span class="ghost">EuroLeague Women</span><span class="ghost">Win probability</span></div>
+        <div class="badge"><span>Last game</span><span class="ghost">EuroLeague Women</span><span class="ghost">Win probability</span></div>
         <h1>From −19 to +2: How Valencia Finally Beat the European Champions</h1>
         <p>Three weeks after losing 69–88 at home, Valencia won 73–71 in Istanbul — their first win over Fenerbahçe in eleven tries. Win probability, Four Factors, the assist network and every possession of the last six minutes.</p>
         <div class="ctas"><span class="btn">Read the analysis →</span></div>
@@ -259,6 +294,40 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
       </div>
     </div>
   </div>
+  </section>
+
+  <!-- ===== WNBA RECAP ===== -->
+  <section class="block" id="wnba">
+    <div class="sec-head">
+      <div><span class="kicker">WNBA Finals 2026 · Recap</span><h2>Golden State, champions 4–3</h2></div>
+      <p>Seven games, 1,045 possessions and 920 shots, all in the Possession Lab and the Shot Lab.</p>
+    </div>
+    <div class="recap">
+      <div class="tracker" aria-label="WNBA Finals series tracker">
+        <div class="top"><span class="kicker" style="color:#fff">WNBA Finals · Best of 7</span><span class="mono" style="font-size:11px;color:var(--muted)" id="trkStatus"></span></div>
+        <div class="teams">
+          <div class="t">ATLANTA<br>DREAM<small id="atlW"></small></div>
+          <div class="score" id="trkScore"></div>
+          <div class="t r">GOLDEN STATE<br>VALKYRIES<small id="gsvW"></small></div>
+        </div>
+        <div class="next">
+          <div><span id="nxtLabel">Next</span><b id="nxtGame"></b><span id="nxtWhere"></span></div>
+          <div class="countdown" id="cd"></div>
+        </div>
+        <div class="games" id="trkGames"></div>
+      </div>
+      <div class="stat">
+        <span class="kicker">Stat of the series</span>
+        <div class="n">4–0</div>
+        <p>Golden State's record when the pace stayed <b>below 76</b> possessions per 40 minutes. Above it, Atlanta went 3–0. Seven games, seven hits.</p>
+        <svg class="pacebars" viewBox="0 0 400 168" role="img" aria-label="Pace by game: 75, 78, 80, 72, 68.5, 77.5, 71.5; line at 76"><rect x="0.0" y="63.5" width="46" height="76.5" rx="4" fill="var(--gsv)"/><text x="23.0" y="56.5" text-anchor="middle" class="v">75</text><text x="23.0" y="160" text-anchor="middle" class="g">G1</text><rect x="59.0" y="38.0" width="46" height="102.0" rx="4" fill="var(--atl)"/><text x="82.0" y="31.0" text-anchor="middle" class="v">78</text><text x="82.0" y="160" text-anchor="middle" class="g">G2</text><rect x="118.0" y="21.0" width="46" height="119.0" rx="4" fill="var(--atl)"/><text x="141.0" y="14.0" text-anchor="middle" class="v">80</text><text x="141.0" y="160" text-anchor="middle" class="g">G3</text><rect x="177.0" y="89.0" width="46" height="51.0" rx="4" fill="var(--gsv)"/><text x="200.0" y="82.0" text-anchor="middle" class="v">72</text><text x="200.0" y="160" text-anchor="middle" class="g">G4</text><rect x="236.0" y="118.8" width="46" height="21.2" rx="4" fill="var(--gsv)"/><text x="259.0" y="111.8" text-anchor="middle" class="v">68.5</text><text x="259.0" y="160" text-anchor="middle" class="g">G5</text><rect x="295.0" y="42.2" width="46" height="97.8" rx="4" fill="var(--atl)"/><text x="318.0" y="35.2" text-anchor="middle" class="v">77.5</text><text x="318.0" y="160" text-anchor="middle" class="g">G6</text><rect x="354.0" y="93.2" width="46" height="46.8" rx="4" fill="var(--gsv)"/><text x="377.0" y="86.2" text-anchor="middle" class="v">71.5</text><text x="377.0" y="160" text-anchor="middle" class="g">G7</text><line x1="0" x2="400" y1="55.0" y2="55.0" stroke="var(--rasp)" stroke-width="1.5" stroke-dasharray="5 4"/><text x="398" y="49.0" text-anchor="end" class="a">76</text><line x1="0" x2="400" y1="140" y2="140" stroke="var(--border)"/></svg>
+        <div class="legend"><span><i style="background:var(--atl)"></i>Atlanta win</span><span><i style="background:var(--gsv)"></i>Golden State win</span></div>
+        <a href="finals-pace.html">See the numbers →</a>
+      </div>
+
+    </div>
+  </section>
+
 
   <!-- ===== TOOLS ===== -->
   <section class="block" id="tools">
@@ -353,39 +422,6 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
   </section>
 
   <!-- ===== NUMBERS ===== -->
-  <!-- ===== WNBA RECAP ===== -->
-  <section class="block" id="wnba">
-    <div class="sec-head">
-      <div><span class="kicker">WNBA Finals 2026 · Recap</span><h2>Golden State, champions 4–3</h2></div>
-      <p>Seven games, 1,045 possessions and 920 shots, all in the Possession Lab and the Shot Lab.</p>
-    </div>
-    <div class="recap">
-      <div class="tracker" aria-label="WNBA Finals series tracker">
-        <div class="top"><span class="kicker" style="color:#fff">WNBA Finals · Best of 7</span><span class="mono" style="font-size:11px;color:var(--muted)" id="trkStatus"></span></div>
-        <div class="teams">
-          <div class="t">ATLANTA<br>DREAM<small id="atlW"></small></div>
-          <div class="score" id="trkScore"></div>
-          <div class="t r">GOLDEN STATE<br>VALKYRIES<small id="gsvW"></small></div>
-        </div>
-        <div class="next">
-          <div><span id="nxtLabel">Next</span><b id="nxtGame"></b><span id="nxtWhere"></span></div>
-          <div class="countdown" id="cd"></div>
-        </div>
-        <div class="games" id="trkGames"></div>
-      </div>
-      <div class="stat">
-        <span class="kicker">Stat of the series</span>
-        <div class="n">4–0</div>
-        <p>Golden State's record when the pace stayed <b>below 76</b> possessions per 40 minutes. Above it, Atlanta went 3–0. Seven games, seven hits.</p>
-        <svg class="pacebars" viewBox="0 0 400 168" role="img" aria-label="Pace by game: 75, 78, 80, 72, 68.5, 77.5, 71.5; line at 76"><rect x="0.0" y="63.5" width="46" height="76.5" rx="4" fill="var(--gsv)"/><text x="23.0" y="56.5" text-anchor="middle" class="v">75</text><text x="23.0" y="160" text-anchor="middle" class="g">G1</text><rect x="59.0" y="38.0" width="46" height="102.0" rx="4" fill="var(--atl)"/><text x="82.0" y="31.0" text-anchor="middle" class="v">78</text><text x="82.0" y="160" text-anchor="middle" class="g">G2</text><rect x="118.0" y="21.0" width="46" height="119.0" rx="4" fill="var(--atl)"/><text x="141.0" y="14.0" text-anchor="middle" class="v">80</text><text x="141.0" y="160" text-anchor="middle" class="g">G3</text><rect x="177.0" y="89.0" width="46" height="51.0" rx="4" fill="var(--gsv)"/><text x="200.0" y="82.0" text-anchor="middle" class="v">72</text><text x="200.0" y="160" text-anchor="middle" class="g">G4</text><rect x="236.0" y="118.8" width="46" height="21.2" rx="4" fill="var(--gsv)"/><text x="259.0" y="111.8" text-anchor="middle" class="v">68.5</text><text x="259.0" y="160" text-anchor="middle" class="g">G5</text><rect x="295.0" y="42.2" width="46" height="97.8" rx="4" fill="var(--atl)"/><text x="318.0" y="35.2" text-anchor="middle" class="v">77.5</text><text x="318.0" y="160" text-anchor="middle" class="g">G6</text><rect x="354.0" y="93.2" width="46" height="46.8" rx="4" fill="var(--gsv)"/><text x="377.0" y="86.2" text-anchor="middle" class="v">71.5</text><text x="377.0" y="160" text-anchor="middle" class="g">G7</text><line x1="0" x2="400" y1="55.0" y2="55.0" stroke="var(--rasp)" stroke-width="1.5" stroke-dasharray="5 4"/><text x="398" y="49.0" text-anchor="end" class="a">76</text><line x1="0" x2="400" y1="140" y2="140" stroke="var(--border)"/></svg>
-        <div class="legend"><span><i style="background:var(--atl)"></i>Atlanta win</span><span><i style="background:var(--gsv)"></i>Golden State win</span></div>
-        <a href="finals-pace.html">See the numbers →</a>
-      </div>
-
-    </div>
-  </section>
-
-  <!-- ===== NUMBERS ===== -->
   <section class="block" id="numbers">
     <div class="sec-head">
       <div><span class="kicker">By the numbers</span><h2>Three stats worth knowing</h2></div>
@@ -412,7 +448,7 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
 
 <div id="wl-footer"></div>
 
-<script src="site.js?v=20261105b"></script>
+<script src="site.js?v=20261112"></script>
 <script>
 const SERIES=window.WLAB.SERIES; // edit the series and the ticker in site.js
 // EuroLeague Women group (edit WLAB.GROUP in site.js)
