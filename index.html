@@ -211,6 +211,51 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
 .pdots i.f{background:#F5C400;border-color:#F5C400}.pdots i.v{background:#F2801F;border-color:#F2801F}.pdots i.to{border-color:#FF6B7D;background:rgba(255,107,125,.12)}
 .recap{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:18px}
 @media (max-width:900px){.recap{grid-template-columns:minmax(0,1fr)}}
+
+/* ---------- latest-story hero (archetypes) ---------- */
+.feature.lead{box-shadow:0 0 0 1px rgba(230,30,99,.0),0 30px 80px -40px rgba(230,30,99,.55);transition:border-color .25s,box-shadow .25s}
+.feature.lead:hover{border-color:rgba(230,30,99,.6);box-shadow:0 0 0 1px rgba(230,30,99,.35),0 30px 90px -30px rgba(230,30,99,.7)}
+.feature .img.alimg{aspect-ratio:16/10;background:#0B0B0E}
+.feature .img.alimg::after{background:linear-gradient(180deg,transparent 82%,var(--surface) 100%)}
+.alviz{width:100%;height:100%;display:block;transition:transform .6s}
+.feature:hover .alviz{transform:scale(1.02)}
+.alviz text{font-family:var(--sans)}
+.alviz .al-a{font-size:17px;font-weight:800;letter-spacing:-.2px}
+.alviz .al-p{font:500 12.5px var(--mono);fill:#9A9AA0}
+.alviz .al-n{font-size:16px;font-weight:800;fill:#F2F2EF}
+.alviz .al-s{font:600 12px var(--mono);fill:#E61E63}
+.alviz .al-k{font:700 13px var(--mono);letter-spacing:2.5px;fill:#E61E63}
+.alviz .al-k2{font:500 12px var(--mono);fill:#9A9AA0}
+@media (max-width:600px){.alviz .al-p,.alviz .al-k2{display:none}.alviz .al-a{font-size:19px}.alviz .al-n{font-size:22px}.alviz .al-s{font-size:16px}.alviz .al-k{font-size:18px}}
+.feature.lead .txt{padding:10px 28px 28px}
+.feature.lead .badge span:first-child{animation:pulse 2.4s ease-in-out infinite}
+@keyframes pulse{0%,100%{box-shadow:0 0 0 0 rgba(230,30,99,.6)}50%{box-shadow:0 0 0 6px rgba(230,30,99,0)}}
+@media (prefers-reduced-motion:reduce){.feature.lead .badge span:first-child{animation:none}.alviz{transition:none}}
+.stat.sviz{justify-content:flex-start;gap:16px;transition:border-color .2s,transform .2s;background:radial-gradient(120% 80% at 100% 0,rgba(230,30,99,.10),transparent 60%),var(--surface)}
+.stat.sviz:hover{border-color:var(--rasp);transform:translateY(-2px)}
+.stat.sviz .srow{display:flex;align-items:center;gap:18px}
+.stat.sviz .n{font-size:60px;flex:none}
+.stat.sviz .srow p{font-size:14.5px;line-height:1.45}
+.stat.sviz .go{font:600 13px var(--mono);color:var(--light);margin-top:auto}
+.stat.sviz:hover .go{color:var(--rasp)}
+.waffle{display:grid;grid-template-columns:repeat(20,1fr);gap:4px}
+.waffle i{aspect-ratio:1;border-radius:3px;background:#2c2c33}
+.waffle i.m{background:var(--rasp)}
+.cmp{display:grid;grid-template-columns:auto minmax(0,1fr);gap:10px 14px;align-items:center}
+.cmp .cl span{font:600 12px var(--mono);color:#d0d0cc;white-space:nowrap}
+.cmp .cb{display:flex;flex-direction:column;gap:4px}
+.cmp .cb i{display:block;height:20px;border-radius:5px;position:relative;font-style:normal}
+.cmp .cb i.vl{background:linear-gradient(90deg,#E61E63,#ff4f8b)}
+.cmp .cb i.lg{background:#3a3a42}
+.cmp .cb em{position:absolute;left:8px;top:50%;transform:translateY(-50%);font:700 11px var(--mono);font-style:normal;color:#fff;white-space:nowrap}
+@media (max-width:420px){.stat.sviz .srow{flex-direction:column;align-items:flex-start;gap:6px}}
+
+/* ---------- section article rows ---------- */
+.sub-head{display:flex;justify-content:space-between;align-items:center;margin:34px 0 16px;gap:12px}
+.sub-head h3{font:700 12px var(--mono);letter-spacing:2px;text-transform:uppercase;color:var(--muted)}
+.sub-head a{font:600 12.5px var(--mono);color:var(--light)}
+.sub-head a:hover{color:var(--rasp)}
+.grid.three .card .th{aspect-ratio:16/10}
 </style>
 </head>
 <body data-page="home">
@@ -222,8 +267,60 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
 
   <!-- ===== HERO (latest story) ===== -->
   <div class="hero">
-    <a class="feature" href="any-league-archetypes.html">
-      <div class="img"><img src="al_radars.png" alt="The eight player archetypes of the Liga Femenina as percentile radars"></div>
+    <a class="feature lead" href="any-league-archetypes.html">
+      <div class="img alimg"><svg class="alviz" viewBox="0 0 800 500" role="img" aria-label="The eight archetypes as the corners of an octagon; every player is a mix of them, for example Iyana Martín: 50% Scoring Wing, 38% Ball-Hawk Guard, 13% Combo Creator">
+<defs><radialGradient id="alg1" cx="30%" cy="35%" r="60%"><stop offset="0" stop-color="#E61E63" stop-opacity=".28"/><stop offset="1" stop-color="#E61E63" stop-opacity="0"/></radialGradient><radialGradient id="alg2" cx="78%" cy="70%" r="55%"><stop offset="0" stop-color="#4FC3E8" stop-opacity=".18"/><stop offset="1" stop-color="#4FC3E8" stop-opacity="0"/></radialGradient><radialGradient id="alg3" cx="50%" cy="50%" r="50%"><stop offset="0" stop-color="#A88BFF" stop-opacity=".16"/><stop offset="1" stop-color="#A88BFF" stop-opacity="0"/></radialGradient><filter id="alglow" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="6"/></filter></defs>
+<rect width="800" height="500" fill="#0B0B0E"/><rect width="800" height="500" fill="url(#alg1)"/><rect width="800" height="500" fill="url(#alg2)"/>
+<ellipse cx="400" cy="272" rx="220" ry="170" fill="url(#alg3)"/>
+<polygon points="427.8,220.2 467.1,250.5 467.1,293.5 427.8,323.8 372.2,323.8 332.9,293.5 332.9,250.5 372.2,220.2" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<polygon points="455.6,168.3 534.1,229.1 534.1,314.9 455.6,375.7 344.4,375.7 265.9,314.9 265.9,229.1 344.4,168.3" fill="none" stroke="rgba(255,255,255,0.06)" stroke-width="1"/>
+<polygon points="484.2,114.9 603.3,206.9 603.3,337.1 484.2,429.1 315.8,429.1 196.7,337.1 196.7,206.9 315.8,114.9" fill="none" stroke="rgba(255,255,255,0.16)" stroke-width="1.4"/>
+<line x1="400" y1="272" x2="484.2" y2="114.9" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="603.3" y2="206.9" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="603.3" y2="337.1" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="484.2" y2="429.1" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="315.8" y2="429.1" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="196.7" y2="337.1" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="196.7" y2="206.9" stroke="rgba(255,255,255,.05)"/>
+<line x1="400" y1="272" x2="315.8" y2="114.9" stroke="rgba(255,255,255,.05)"/>
+<line x1="484.2" y1="114.9" x2="603.3" y2="206.9" stroke="#A88BFF" stroke-opacity=".55" stroke-width="2.4"/>
+<line x1="603.3" y1="206.9" x2="603.3" y2="337.1" stroke="#A88BFF" stroke-opacity=".55" stroke-width="2.4"/>
+<line x1="484.2" y1="429.1" x2="315.8" y2="429.1" stroke="#FF4F8B" stroke-opacity=".55" stroke-width="2.4"/>
+<line x1="196.7" y1="337.1" x2="196.7" y2="206.9" stroke="#4FC3E8" stroke-opacity=".55" stroke-width="2.4"/>
+<line x1="196.7" y1="206.9" x2="315.8" y2="114.9" stroke="#4FC3E8" stroke-opacity=".55" stroke-width="2.4"/>
+<line x1="544.3" y1="333.6" x2="603.3" y2="206.9" stroke="#F2F2EF" stroke-opacity="0.67" stroke-width="2.9" stroke-linecap="round"/>
+<line x1="544.3" y1="333.6" x2="603.3" y2="337.1" stroke="#F2F2EF" stroke-opacity="0.39" stroke-width="1.6" stroke-linecap="round"/>
+<line x1="544.3" y1="333.6" x2="484.2" y2="429.1" stroke="#F2F2EF" stroke-opacity="0.80" stroke-width="3.5" stroke-linecap="round"/>
+<circle cx="544.3" cy="333.6" r="14" fill="#E61E63" opacity=".55" filter="url(#alglow)"/>
+<circle cx="544.3" cy="333.6" r="7.5" fill="#F2F2EF" stroke="#E61E63" stroke-width="3"/>
+<g class="al-iy"><text x="524.3" y="309.6" text-anchor="end" class="al-n">Iyana Martín</text><text x="524.3" y="327.6" text-anchor="end" class="al-s">50% SW · 38% BHG · 13% CC</text></g>
+<circle cx="484.2" cy="114.9" r="11" fill="#A88BFF" opacity=".35" filter="url(#alglow)"/><circle cx="484.2" cy="114.9" r="6" fill="#A88BFF"/>
+<text x="491.1" y="90.5" text-anchor="start" class="al-a" fill="#A88BFF">Floor General</text>
+<text x="491.1" y="106.5" text-anchor="start" class="al-p">Lucía Togores</text>
+<circle cx="603.3" cy="206.9" r="11" fill="#A88BFF" opacity=".35" filter="url(#alglow)"/><circle cx="603.3" cy="206.9" r="6" fill="#A88BFF"/>
+<text x="619.9" y="193.3" text-anchor="start" class="al-a" fill="#A88BFF">Ball-Hawk Guard</text>
+<text x="619.9" y="209.3" text-anchor="start" class="al-p">Claudia Soriano</text>
+<circle cx="603.3" cy="337.1" r="11" fill="#A88BFF" opacity=".35" filter="url(#alglow)"/><circle cx="603.3" cy="337.1" r="6" fill="#A88BFF"/>
+<text x="619.9" y="358.7" text-anchor="start" class="al-a" fill="#A88BFF">Combo Creator</text>
+<text x="619.9" y="374.7" text-anchor="start" class="al-p">Nikola Dudasova</text>
+<circle cx="484.2" cy="429.1" r="11" fill="#FF4F8B" opacity=".35" filter="url(#alglow)"/><circle cx="484.2" cy="429.1" r="6" fill="#FF4F8B"/>
+<text x="491.1" y="461.5" text-anchor="start" class="al-a" fill="#FF4F8B">Scoring Wing</text>
+<text x="491.1" y="477.5" text-anchor="start" class="al-p">Madison Conner</text>
+<circle cx="315.8" cy="429.1" r="11" fill="#FF4F8B" opacity=".35" filter="url(#alglow)"/><circle cx="315.8" cy="429.1" r="6" fill="#FF4F8B"/>
+<text x="308.9" y="461.5" text-anchor="end" class="al-a" fill="#FF4F8B">Spot-Up Shooter</text>
+<text x="308.9" y="477.5" text-anchor="end" class="al-p">Zoe Hernández</text>
+<circle cx="196.7" cy="337.1" r="11" fill="#4FC3E8" opacity=".35" filter="url(#alglow)"/><circle cx="196.7" cy="337.1" r="6" fill="#4FC3E8"/>
+<text x="180.1" y="358.7" text-anchor="end" class="al-a" fill="#4FC3E8">Rim Protector</text>
+<text x="180.1" y="374.7" text-anchor="end" class="al-p">Nia Coffey</text>
+<circle cx="196.7" cy="206.9" r="11" fill="#4FC3E8" opacity=".35" filter="url(#alglow)"/><circle cx="196.7" cy="206.9" r="6" fill="#4FC3E8"/>
+<text x="180.1" y="193.3" text-anchor="end" class="al-a" fill="#4FC3E8">Glass Cleaner</text>
+<text x="180.1" y="209.3" text-anchor="end" class="al-p">Lauren Ebo</text>
+<circle cx="315.8" cy="114.9" r="11" fill="#4FC3E8" opacity=".35" filter="url(#alglow)"/><circle cx="315.8" cy="114.9" r="6" fill="#4FC3E8"/>
+<text x="308.9" y="90.5" text-anchor="end" class="al-a" fill="#4FC3E8">Interior Star</text>
+<text x="308.9" y="106.5" text-anchor="end" class="al-p">Aminata Gueye</text>
+<text x="28" y="40" class="al-k">LIGA FEMENINA 2025/26</text><text x="28" y="60" class="al-k2">8 archetypes · 142 players</text>
+<text x="772" y="40" text-anchor="end" class="al-k">EVERY PLAYER IS A MIX</text><text x="772" y="60" text-anchor="end" class="al-k2">of the eight corners</text>
+</svg></div>
       <div class="txt">
         <div class="badge"><span>New</span><span class="ghost">Liga Femenina</span><span class="ghost">Research</span></div>
         <h1>Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina</h1>
@@ -234,18 +331,24 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
     </a>
 
     <div class="side">
-      <div class="stat">
+      <a class="stat sviz" href="any-league-archetypes.html">
         <span class="kicker">Stat of the study</span>
-        <div class="n">59%</div>
-        <p>of Liga Femenina players have <b>no archetype above half of their game</b>. Positions are labels; most players are a mix of styles.</p>
-        <a href="any-league-archetypes.html">The eight archetypes →</a>
-      </div>
-      <div class="stat">
+        <div class="srow"><div class="n">59%</div><p>of players have <b>no archetype above half of their game</b>.</p></div>
+        <div class="waffle" role="img" aria-label="59 of every 100 players are a mix of styles"><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i class="m"></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+        <div class="legend"><span><i style="background:var(--rasp)"></i>Mix of styles</span><span><i style="background:#3a3a42"></i>One dominant style</span></div>
+        <span class="go">The eight archetypes →</span>
+      </a>
+      <a class="stat sviz" href="Any_League_Costa_2026.pdf" target="_blank" rel="noopener">
         <span class="kicker">The champion's blueprint</span>
-        <div class="n">21%</div>
-        <p>of Valencia's rotation is <b>Rim Protector</b>, more than twice the league average (9%), with almost no classic point guard.</p>
-        <a href="Any_League_Costa_2026.pdf" target="_blank" rel="noopener">Read the paper (PDF) →</a>
-      </div>
+        <div class="srow"><div class="n">21%</div><p>of Valencia's rotation is <b>Rim Protector</b>, over twice the league share.</p></div>
+        <div class="cmp">
+          <div class="cl"><span>Rim Protector</span></div>
+          <div class="cb"><i class="vl" style="width:84%"><em>Valencia 21%</em></i><i class="lg" style="width:36%"><em>League 9%</em></i></div>
+          <div class="cl"><span>Floor General</span></div>
+          <div class="cb"><i class="vl" style="width:24%"><em>6%</em></i><i class="lg" style="width:60%"><em>15%</em></i></div>
+        </div>
+        <span class="go">Read the paper (PDF) →</span>
+      </a>
     </div>
   </div>
 
@@ -325,6 +428,31 @@ a:focus-visible,button:focus-visible{outline:2px solid var(--rasp);outline-offse
         <a href="finals-pace.html">See the numbers →</a>
       </div>
 
+    </div>
+
+    <div class="sub-head"><h3>WNBA analysis</h3><a href="#analysis" data-jump="wnba">All WNBA stories →</a></div>
+    <div class="grid three">
+      <a class="card" href="shot-lab.html">
+        <div class="th"><img src="shot_lab_thumb.png" alt="" loading="lazy"></div>
+        <div class="bd"><div class="tags"><span>WNBA Finals</span><span>Tool</span></div>
+          <h3>We Tracked All 920 Shots of the WNBA Finals — and Golden State Won the Long Possessions</h3>
+          <p>Every shot of Dream vs Valkyries, tied to its possession and to who was on the floor.</p>
+          <span class="meta">1 Nov 2026</span></div>
+      </a>
+      <a class="card" href="finals-pace.html">
+        <div class="th"><img src="finals_pace_thumb.png" alt="" loading="lazy"></div>
+        <div class="bd"><div class="tags"><span>WNBA Finals</span><span>Tool</span></div>
+          <h3>We Built a Possession Lab for the WNBA Finals — and It Says Pace Decides the Series</h3>
+          <p>1,045 possessions, seven games, one number that decided them all.</p>
+          <span class="meta">26 Oct 2026</span></div>
+      </a>
+      <a class="card" href="scoring-a-lot.html">
+        <div class="th"><img src="ts-vs-points.png" alt="" loading="lazy"></div>
+        <div class="bd"><div class="tags"><span>WNBA</span><span>Shooting</span></div>
+          <h3>Scoring a Lot Isn't Scoring Well</h3>
+          <p>What True Shooting % reveals about the WNBA's top 10 scorers in 2026.</p>
+          <span class="meta">29 Jun 2026</span></div>
+      </a>
     </div>
   </section>
 
@@ -486,8 +614,9 @@ tick();setInterval(tick,1000);
 document.querySelectorAll('.chip').forEach(c=>c.addEventListener('click',()=>{
   document.querySelectorAll('.chip').forEach(o=>o.setAttribute('aria-pressed',o===c));
   const f=c.dataset.f;
-  document.querySelectorAll('.card').forEach(card=>{card.hidden=f!=='all'&&!card.dataset.tags.split(' ').includes(f);});
+  document.querySelectorAll('#analysis .card').forEach(card=>{card.hidden=f!=='all'&&!card.dataset.tags.split(' ').includes(f);});
 }));
+document.querySelectorAll('[data-jump]').forEach(a=>a.addEventListener('click',()=>{const c=document.querySelector('.chip[data-f="'+a.dataset.jump+'"]');if(c)c.click();}));
 
 </script>
 </body>
