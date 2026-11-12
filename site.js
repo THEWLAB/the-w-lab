@@ -9,6 +9,7 @@
    ===================================================================== */
 window.WLAB = {
   TICKER: [
+    "<b>New study</b> · The eight ways to play in the Liga Femenina · <em>59%</em> of players are a mix",
     "<b>EuroLeague Women</b> · Fenerbahçe 71–73 Valencia · Peterson <em>21</em> pts, winning FTs at 0:01",
     "<b>Valencia</b> win in Istanbul three weeks after losing <em>69–88</em> at home",
     "<b>Golden State Valkyries</b> · 2026 WNBA champions · <em>4–3</em>",
@@ -37,6 +38,9 @@ window.WLAB = {
     champion: { team:"Golden State Valkyries", line:"Won 4–3 · Game 7 at Chase Center, 31 Oct" }
   },
   ARTICLES: [
+    { slug:"any-league-archetypes", comp:"elw", href:"any-league-archetypes.html", img:"al_thumb.png", tags:["Liga Femenina","Research"], date:"12 Nov 2026",
+      title:"Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina",
+      dek:"We tested a men's player-archetype model on every game of the Liga Femenina." },
     { slug:"fenerbahce-valencia", comp:"elw", short:"Fenerbahçe vs Valencia: from −19 to +2", href:"fenerbahce-valencia.html", img:"fen_val_thumb.png", tags:["EuroLeague","Europe"], date:"5 Nov 2026",
       title:"From −19 to +2: How Valencia Finally Beat the European Champions",
       dek:"Win probability, Four Factors and the assist network of Fenerbahçe vs Valencia." },

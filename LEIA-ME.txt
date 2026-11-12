@@ -1,0 +1,22 @@
+THE W LAB · artigo "Any League?" — como publicar
+
+1) Copia TODOS os ficheiros desta pasta para a raiz do repositório do site
+   (the-w-lab), por cima dos que lá estão.
+
+   Ficheiros novos:
+     any-league-archetypes.html   o artigo
+     al_*.png                     figuras, capa e miniatura
+     Any_League_Costa_2026.pdf    o paper (com o link do GitHub)
+
+   Ficheiros que SUBSTITUEM os atuais (já com o artigo novo acrescentado):
+     index.html   novo cartão em destaque em "Latest deep dives"
+     site.js      artigo na lista "Keep reading" e no rodapé + linha no ticker
+     site.css, logo.png, avatar.png   iguais aos atuais (só para a pasta funcionar sozinha)
+
+2) No Terminal, dentro da pasta do site:
+     git add .
+     git commit -m "New article: The eight ways to play in the Liga Femenina"
+     git push
+
+3) Em 1–2 minutos fica em:
+   https://thewlab.github.io/the-w-lab/any-league-archetypes.html

@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina · The W Lab</title>
+<meta name="description" content="A model built for men's basketball promised player archetypes for any league. We tested it on every game of the 2025/26 Liga Femenina Endesa. The method works. The map of roles doesn't travel.">
+<meta property="og:title" content="Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina">
+<meta property="og:description" content="A model built for men's basketball promised player archetypes for any league. We tested it on every game of the 2025/26 Liga Femenina Endesa. The method works. The map of roles doesn't travel.">
+<meta property="og:image" content="https://thewlab.github.io/the-w-lab/al_cover.png">
+<meta name="author" content="Tomás Costa">
+<link rel="icon" href="logo.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=JetBrains+Mono:wght@400;600;700&display=swap">
+<link rel="stylesheet" href="site.css">
+<style>
+.a-body table.txt th,.a-body table.txt td{text-align:left}
+.a-body table.txt td{white-space:normal}
+.a-body p.cap{font:12.5px var(--mono);color:var(--muted);margin:-22px 0 30px;line-height:1.6}
+.a-body p:has(> img){margin:34px 0 26px}
+.studylinks{display:flex;flex-direction:column;gap:8px}
+.studylinks .btn{justify-content:center}
+</style>
+</head>
+<body data-page="article" data-slug="any-league-archetypes">
+<div id="wl-ticker"></div>
+<div id="wl-header"></div>
+
+<section class="a-hero"><div class="wrap">
+  <div class="crumbs"><a href="index.html">Home</a><span>/</span><a href="index.html#analysis">Analysis</a><span>/</span><span>Europe</span></div>
+  <div class="pills"><span>Liga Femenina</span><span>Europe</span><span>Research</span></div>
+  <h1>Point Guard, Power Forward… or Something Else? The Eight Ways to Play in the Liga Femenina</h1>
+  <p class="dek">A model built for men's basketball promised player archetypes for any league. We tested it on every game of the 2025/26 Liga Femenina Endesa. The method works. The map of roles doesn't travel.</p>
+  <div class="byline">
+    <div class="author"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><span>12 Nov 2026 · <span id="readtime"></span></span></div></div>
+    <div class="share"><button class="btn line sm" id="copylink" type="button">Copy link</button><a class="btn line sm" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Instagram</a></div>
+  </div>
+</div></section>
+
+<figure class="a-cover"><img src="al_cover.png" alt="The eight archetypes of the Liga Femenina as percentile radars"><figcaption>The eight archetypes of the Liga Femenina Endesa 2025/26. Full study: <a href="Any_League_Costa_2026.pdf" target="_blank" rel="noopener">paper (PDF)</a> · <a href="https://github.com/tomascosta7/any-league-archetypes" target="_blank" rel="noopener">code</a>.</figcaption></figure>
+
+<div class="a-layout wrap">
+  <article class="a-body">
+    <div class="glance-m box"><h4>At a glance</h4><div class="glance"><div><b>8</b><span>archetypes found in 142 Liga Femenina players</span></div><div><b>59%</b><span>of players have no archetype above half of their game</span></div><div><b>30%</b><span>change role between seasons beyond pure noise</span></div></div></div>
+<p>Nia Coffey is listed as a small forward. On the court, she is something else entirely: <strong>97% Rim Protector</strong>, one of the purest shot-blockers in the Liga Femenina.</p>
+<p>Chloe Bibby is listed as a power forward. She plays as an <strong>80% Scoring Wing</strong>.</p>
+<p>That gap between the label and the game is where this project started. Positions tell you where a player stands at tip-off. They don’t tell you what she does. In the 2025/26 Liga Femenina Endesa, only <strong>49%</strong> of what small forwards do on court actually fits the wing family of roles. For centres, the label works much better: 81%. In between, every position leaks.</p>
+<p>So what should we use instead?</p>
+<h2 id="the-paper-that-started-it">The paper that started it</h2>
+<p>At the <strong>MIT Sloan Sports Analytics Conference 2026</strong>, Marlin Myrte, Sebastian Buzzalino and Thierry Aymerich presented <em>Scouting Anyone: Probabilistic Player Archetypes for Any League</em>. Their idea is simple and powerful:</p>
+<ul>
+<li>find the <strong>extreme playing styles</strong> that exist in a league (the <em>archetypes</em>);</li>
+<li>describe every player as a <strong>mix</strong> of them, with percentages that add up to 100%;</li>
+<li>use only <strong>public box-score stats</strong>, so it works even in leagues with little data.</li>
+</ul>
+<p>They built eight archetypes from seven men’s European leagues (including the Spanish ACB) and the NBA, and presented the method as valid <strong>for any league</strong>.</p>
+<p>No women’s league was tested. So I took their exact recipe and applied it to the Liga Femenina Endesa, asking three questions:</p>
+<ol type="1">
+<li>Do the men’s archetypes exist in the women’s game?</li>
+<li>Are the archetypes stable enough to trust?</li>
+<li>Do they hold when we look at a new season?</li>
+</ol>
+<h2 id="building-the-data">Building the data</h2>
+<p>Everything comes from the official website of the Spanish Basketball Federation (FEB). I wrote a Python scraper that reads every box score of the season, game by game:</p>
+<ul>
+<li><strong>296 games</strong> over two seasons (the full 2025/26 regular season and the first seven rounds of 2026/27);</li>
+<li><strong>5,783 player-game rows</strong>, every one checked against the federation’s official totals.</li>
+</ul>
+<p>It took a few attempts. The first version read team rosters, but rosters only list current players, so anyone who had left mid-season vanished (Valencia came out 103 points short). Past seasons were hidden behind a web form that ignored the URL. And the 2025/26 box scores of Movistar Estudiantes are missing 372 points at the source itself, a gap I documented rather than patched.</p>
+<h2 id="how-the-model-works">How the model works</h2>
+<p>Each player is described by the same <strong>15 stats</strong> as in the paper, all adjusted for minutes and pace:</p>
+<table class="txt">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Group</th>
+<th>Stats</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Scoring</td>
+<td>Points and shots per 100 possessions, usage rate, free-throw rate, 2P%, 3P%, FT%, share of shots from three</td>
+</tr>
+<tr class="even">
+<td>Creation</td>
+<td>Assist rate, turnover rate</td>
+</tr>
+<tr class="odd">
+<td>Defence</td>
+<td>Steal rate, block rate</td>
+</tr>
+<tr class="even">
+<td>Rebounding</td>
+<td>Offensive and defensive rebound rates</td>
+</tr>
+<tr class="odd">
+<td>Size</td>
+<td>Height</td>
+</tr>
+</tbody>
+</table>
+<p>Two details matter:</p>
+<ul>
+<li><strong>Shooting percentages are corrected for small samples.</strong> A player who goes 5-for-8 from three looks elite on almost no evidence, so each percentage is pulled towards the league average until there are enough attempts to trust it. My first run skipped this, and some archetypes were built around lucky shooters.</li>
+<li><strong>Only players with 300+ minutes</strong> enter the model, as in the paper: 142 player-team stints.</li>
+</ul>
+<p>The technique, <strong>Archetypal Analysis</strong>, looks for the corners of the data rather than its centre. Compared with K-Means, the usual clustering method, it explains far more of how players differ: <strong>69.5% against 49.6%</strong>.</p>
+<h2 id="eight-ways-to-play">Eight ways to play</h2>
+<p>The model found five perimeter archetypes and three interior ones. Six of them are so extreme that a real player sits almost exactly on top of them:</p>
+<table class="txt">
+<colgroup>
+<col style="width: 33%" />
+<col style="width: 33%" />
+<col style="width: 33%" />
+</colgroup>
+<thead>
+<tr class="header">
+<th>Archetype</th>
+<th>What defines her</th>
+<th>The purest example</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td><strong>Floor General</strong></td>
+<td>Assists on one in four of her teammates’ baskets; scores little; uses only 14.5% of possessions</td>
+<td>Lucía Togores (99%)</td>
+</tr>
+<tr class="even">
+<td><strong>Ball-Hawk Guard</strong></td>
+<td>The league’s most extreme stealer (6.1% of opponent possessions); also a playmaker; 170 cm</td>
+<td>Claudia Soriano (100%)</td>
+</tr>
+<tr class="odd">
+<td><strong>Combo Creator</strong></td>
+<td>High volume (23.7 shots per 100), protects the ball, struggles inside (39% from two)</td>
+<td>Nikola Dudasova (98%)</td>
+</tr>
+<tr class="even">
+<td><strong>Scoring Wing</strong></td>
+<td>28 points per 100, the best three-point profile (39%), 60% of shots from deep</td>
+<td>Madison Conner (100%)</td>
+</tr>
+<tr class="odd">
+<td><strong>Spot-Up Shooter</strong></td>
+<td>Barely touches the ball (9.5% usage); three of every four shots are threes</td>
+<td>Zoe Hernández (100%)</td>
+</tr>
+<tr class="even">
+<td><strong>Rim Protector</strong></td>
+<td>Blocks 3.8% of opponent twos; strong defensive rebounder</td>
+<td>Nia Coffey (97%)</td>
+</tr>
+<tr class="odd">
+<td><strong>Interior Star</strong></td>
+<td>The league’s top scorer profile: 29 points per 100, 56% from two, elite offensive rebounding</td>
+<td>Aminata Gueye (92%)</td>
+</tr>
+<tr class="even">
+<td><strong>Glass Cleaner</strong></td>
+<td>Crashes the offensive glass, gets to the line, but shoots 51% from it</td>
+<td>Lauren Ebo (100%)</td>
+</tr>
+</tbody>
+</table>
+<p><img src="al_radars.png" alt="The eight archetypes of the Liga Femenina 2025/26, as percentiles against the league, with the purest player of each." loading="lazy"></p>
+<p class="cap">The eight archetypes of the Liga Femenina 2025/26, as percentiles against the league, with the purest player of each.</p>
+<h2 id="most-players-are-a-mix">Most players are a mix</h2>
+<p>Here’s the real point of the method: <strong>59% of the league has no archetype above half of their game.</strong> The typical player is a blend.</p>
+<p>Take <strong>Iyana Martín</strong> (Perfumerías Avenida): 50% Scoring Wing, 38% Ball-Hawk Guard, 13% Combo Creator, 0% Floor General. Her profile sits near the top of the league in usage, shots, points, assists and steals, and in the bottom quarter for ball security. A point guard who scores, passes and pressures, and organises nothing like a traditional point guard.</p>
+<p>Every one of the 142 players in the sample has her own card, with her mix, a percentile radar and her three most similar players across the league. Iyana’s closest match is <strong>Imani Tate</strong>, with a similarity of 0.89.</p>
+<p><img src="al_cards.png" alt="Two of the 142 player cards: Iyana Martín (Perfumerías Avenida) and Awa Fam Thiam (Valencia)." loading="lazy"></p>
+<p class="cap">Two of the 142 player cards: Iyana Martín (Perfumerías Avenida) and Awa Fam Thiam (Valencia).</p>
+<h2 id="role-players-come-in-types.-stars-dont.">Role players come in types. Stars don’t.</h2>
+<p>To know which archetypes are real and which are accidents of one model run, I refitted the model <strong>20 times</strong> from different starting points and checked how often each archetype came back.</p>
+<table class="txt">
+<thead>
+<tr class="header">
+<th>How stable</th>
+<th>Archetype</th>
+<th>Found again</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Solid</td>
+<td>Spot-Up Shooter</td>
+<td>89%</td>
+</tr>
+<tr class="even">
+<td>Solid</td>
+<td>Floor General</td>
+<td>74%</td>
+</tr>
+<tr class="odd">
+<td>Solid</td>
+<td>Glass Cleaner</td>
+<td>74%</td>
+</tr>
+<tr class="even">
+<td>Moderate</td>
+<td>Ball-Hawk Guard</td>
+<td>58%</td>
+</tr>
+<tr class="odd">
+<td>Moderate</td>
+<td>Rim Protector</td>
+<td>53%</td>
+</tr>
+<tr class="even">
+<td>Tentative</td>
+<td>Combo Creator</td>
+<td>42%</td>
+</tr>
+<tr class="odd">
+<td>Tentative</td>
+<td>Interior Star</td>
+<td>42%</td>
+</tr>
+<tr class="even">
+<td>Tentative</td>
+<td>Scoring Wing</td>
+<td>26%</td>
+</tr>
+</tbody>
+</table>
+<p>The pattern follows how much each archetype uses the ball (correlation of −0.81). There is a typical way to be a spot-up shooter or a pass-first point guard. But every player who carries an offence does it her own way, so the model can’t pin down a single “star” type.</p>
+<p><img src="al_stability.png" alt="How often each archetype came back across 20 refits, against how much it uses the ball." loading="lazy"></p>
+<p class="cap">How often each archetype came back across 20 refits, against how much it uses the ball.</p>
+<h2 id="same-game-different-shape">Same game, different shape</h2>
+<p>Now the big question: do the men’s archetypes exist in the Liga Femenina?</p>
+<p>The paper describes its archetypes in words (“high assist rate, low scoring…”), so I translated each description into the same 15 stats and measured how closely each of our archetypes matches each of theirs. Then I tested whether the matches held when the translation was changed.</p>
+<table class="txt">
+<thead>
+<tr class="header">
+<th>Men’s archetype (paper)</th>
+<th>Liga Femenina match</th>
+<th>How robust</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Traditional Playmaker</td>
+<td>Floor General</td>
+<td>100%</td>
+</tr>
+<tr class="even">
+<td>3PT Specialist</td>
+<td>Spot-Up Shooter</td>
+<td>94%</td>
+</tr>
+<tr class="odd">
+<td>High Usage Guard</td>
+<td>Scoring Wing</td>
+<td>97%</td>
+</tr>
+<tr class="even">
+<td>High Usage Forward</td>
+<td>Interior Star</td>
+<td>100%</td>
+</tr>
+<tr class="odd">
+<td>Defensive Specialist</td>
+<td>Rim Protector</td>
+<td>94%</td>
+</tr>
+<tr class="even">
+<td>Traditional Center and Backup Big</td>
+<td>Glass Cleaner</td>
+<td>91%</td>
+</tr>
+<tr class="odd">
+<td>none</td>
+<td><strong>Combo Creator</strong></td>
+<td>no men’s equivalent</td>
+</tr>
+</tbody>
+</table>
+<p><img src="al_paper_comparison.png" alt="Agreement between the paper’s men’s archetypes and ours" loading="lazy"></p>
+<p class="cap">Agreement between the paper’s men’s archetypes (rows) and the Liga Femenina archetypes (columns). Boxes mark the best one-to-one match.</p>
+<p>What this tells us:</p>
+<ul>
+<li><strong>Role players look the same in both games.</strong> The pass-first point guard and the spot-up shooter are almost identical, and they are also our most stable archetypes.</li>
+<li><strong>The paint is organised differently.</strong> Both of the men’s centre types point to the same player type here. Our Interior Star behaves like a men’s scoring forward, not a centre. And protecting the rim is a specialist’s job, not the classic big’s.</li>
+<li><strong>Creation is shared.</strong> What the men’s model treats as one primary ball-handler spreads across three of our archetypes.</li>
+<li><strong>Defence comes with the ball.</strong> The league’s best stealers are high-usage playmakers, not low-usage defensive specialists.</li>
+<li><strong>One type is new.</strong> The Combo Creator matches none of the men’s archetypes: a role that may be specific to the women’s game.</li>
+</ul>
+<h2 id="what-each-team-is-made-of">What each team is made of</h2>
+<p>Add up the mixes of every player in a rotation, weighted by minutes, and you get a team’s fingerprint. Every team contains all eight archetypes; identity comes from <strong>one block worth about one player</strong>.</p>
+<table class="txt">
+<thead>
+<tr class="header">
+<th>Team</th>
+<th>Signature</th>
+<th>Team share</th>
+<th>League average</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Spar Girona</td>
+<td>Interior Star</td>
+<td>28%</td>
+<td>17%</td>
+</tr>
+<tr class="even">
+<td>Innova-TSN Leganés</td>
+<td>Combo Creator</td>
+<td>27%</td>
+<td>13%</td>
+</tr>
+<tr class="odd">
+<td>Movistar Estudiantes</td>
+<td>Floor General</td>
+<td>23%</td>
+<td>15%</td>
+</tr>
+<tr class="even">
+<td>Baxi Ferrol</td>
+<td>Scoring Wing</td>
+<td>23%</td>
+<td>15%</td>
+</tr>
+<tr class="odd">
+<td>Valencia B.C.</td>
+<td>Rim Protector</td>
+<td>21%</td>
+<td>9%</td>
+</tr>
+<tr class="even">
+<td>Club Joventut Badalona</td>
+<td>Glass Cleaner</td>
+<td>19%</td>
+<td>8%</td>
+</tr>
+</tbody>
+</table>
+<p><img src="al_teams.png" alt="What each rotation is made of: archetype mix by team, weighted by minutes, with the league average on top." loading="lazy"></p>
+<p class="cap">What each rotation is made of: archetype mix by team, weighted by minutes, with the league average on top.</p>
+<h3 id="the-champions-blueprint">The champion’s blueprint</h3>
+<p><strong>Valencia</strong>, the 2025/26 champion, built their title from the rim out:</p>
+<ul>
+<li><strong>twice the league’s share of Rim Protectors</strong>, through María Pérez Araujo, Raquel Carrera and Nia Coffey;</li>
+<li><strong>almost no classic Floor General</strong> (6% against 15%): their three point guards, Leticia Romero, Hind Ben Abdelkader and Ivon Anderson, all profile as scorers;</li>
+<li><strong>almost no specialist rebounders</strong>: the boards came from bigs who also protect the rim and score;</li>
+<li><strong>a deep rotation</strong>: eleven players over 300 minutes, none above 650.</li>
+</ul>
+<h2 id="and-this-season">And this season?</h2>
+<p>I projected the first seven rounds of 2026/27 onto the same model, with no refitting. At first sight, 45% of players had changed archetype. But seven games is a small sample, so I measured how much a player’s mix moves <strong>by pure chance</strong>: comparing the first seven rounds of last season with the full season, for the same players on the same teams.</p>
+<p>The answer is sobering: <strong>noise alone changes the main archetype of 39% of players.</strong> Early-season labels are unreliable.</p>
+<p>But the mix itself moves more between seasons than chance explains, and <strong>30% of players change role beyond the noise threshold</strong>, three times what chance would produce. The biggest movers, like Moira Joiner, Alessandra Orsili and Veronika Voráčková, change more than noise ever does. Players who switched clubs change a bit more, but roles shift even for those who stayed.</p>
+<p><img src="al_noise.png" alt="Grey: how much a mix moves by chance alone after seven games. Pink: how much it moves between seasons." loading="lazy"></p>
+<p class="cap">Grey: how much a mix moves by chance alone after seven games. Pink: how much it moves between seasons.</p>
+<h2 id="so-does-it-work-for-any-league">So, does it work for any league?</h2>
+<p><strong>The method does. The archetypes don’t travel as a fixed list.</strong></p>
+<p>With nothing but public box scores, the model finds clear, stable, interpretable roles in a women’s league, with the same quality as in the men’s game. But the map of roles is different: the Liga Femenina shares the men’s role players, organises its paint differently, splits its creators, and has at least one role of its own.</p>
+<p>The practical lesson for any scout or analyst: <strong>don’t import the labels, refit the model on your own league.</strong></p>
+<h2 id="whats-next">What’s next</h2>
+<p>This is the first version. Next steps include testing the model without each archetype’s “anchor” player, pooling several seasons, and adding lineup data to answer the question coaches really care about: <strong>which combinations of archetypes win?</strong></p>
+<h2 id="read-the-full-study">Read the full study</h2>
+<p><img src="al_map.png" alt="The interactive league map" loading="lazy"></p>
+<p class="cap">The interactive league map: every player positioned by playing style, with a slider from 2025/26 to 2026/27.</p>
+<ul>
+<li>📄 <strong>The paper:</strong> <a href="Any_League_Costa_2026.pdf">Any League? Probabilistic Player Archetypes in Women’s Basketball</a></li>
+<li>💻 <strong>The code and all 142 player cards:</strong> <a href="https://github.com/tomascosta7/any-league-archetypes">github.com/tomascosta7/any-league-archetypes</a></li>
+<li>🗺️ <strong>The interactive league map:</strong> <a href="https://htmlpreview.github.io/?https://github.com/tomascosta7/any-league-archetypes/blob/main/figures/plotly/league_map_seasons.html">explore it here</a></li>
+</ul>
+<p>Which archetype is your favourite player? Tell me, and I’ll share her card.</p>
+<p><em>This is an independent project, not affiliated with the FEB or the Liga Femenina Endesa. Data: baloncestoenvivo.feb.es.</em></p>
+
+  </article>
+  <aside class="a-side"><div class="stick">
+    <div class="box"><h4>At a glance</h4><div class="glance"><div><b>8</b><span>archetypes found in 142 Liga Femenina players</span></div><div><b>59%</b><span>of players have no archetype above half of their game</span></div><div><b>30%</b><span>change role between seasons beyond pure noise</span></div></div></div>
+    <div class="box"><h4>The full study</h4><div class="studylinks">
+<a class="btn sm" href="Any_League_Costa_2026.pdf" target="_blank" rel="noopener">Read the paper (PDF)</a>
+<a class="btn line sm" href="https://github.com/tomascosta7/any-league-archetypes" target="_blank" rel="noopener">Code &amp; player cards</a>
+<a class="btn line sm" href="https://htmlpreview.github.io/?https://github.com/tomascosta7/any-league-archetypes/blob/main/figures/plotly/league_map_seasons.html" target="_blank" rel="noopener">Interactive map</a></div></div>
+    <div class="box"><h4>In this article</h4><nav class="toc" id="toc"></nav></div>
+  </div></aside>
+</div>
+
+<section class="a-end wrap">
+  <div class="authorcard"><img src="avatar.png" alt=""><div><b>Tomás Costa</b><p>Founder of The W Lab and Sports Analytics master's student in Madrid. Women's basketball, decoded by the numbers.</p></div><a class="btn" href="https://instagram.com/the.w.lab" target="_blank" rel="noopener">Follow @the.w.lab</a></div>
+  <div class="more"><span class="kicker">Keep reading</span><h3>More from The W Lab</h3><div class="grid" id="more"></div></div>
+</section>
+
+<div id="wl-footer"></div>
+<script src="site.js"></script>
+</body></html>
